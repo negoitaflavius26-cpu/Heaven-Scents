@@ -100,6 +100,7 @@ EMAIL_PORT=587
 
 # Session
 SESSION_SECRET=your_session_secret
+```
 
 ---
 ## Note:
