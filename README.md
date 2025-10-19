@@ -75,29 +75,30 @@ Before running the project, make sure you have the following installed and confi
 3. **Install dependencies**
    npm install
 
-4. **Create a .env file in the root directory and add the following environment variables:**
+4. **Create a `.env` file** in the root directory and add the following environment variables:
 
-## MongoDB
+```bash
+# MongoDB
 MONGO_URI=your_mongodb_connection_string
 
-## Cloudinary
+# Cloudinary
 CLOUDINARY_KEY=your_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-## Stripe
+# Stripe
 STRIPE_KEY=your_stripe_secret_key
 
-## App url
+# App URL
 URL=http://localhost:3000
 
-## Email (Nodemailer)
+# Email (Nodemailer)
 EMAIL_PASS=your_email_password_or_app_password
 EMAIL_ADRESS=your_email@example.com
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 
-## Session
+# Session
 SESSION_SECRET=your_session_secret
 
 ---
