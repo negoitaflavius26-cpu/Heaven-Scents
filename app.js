@@ -12,7 +12,7 @@ const cosRoute=require('./router/cosRoute')
 const productRoutes=require('./router/productRoutes')
 const utilizatorRute=require('./router/utilizatorRouter')
 const stripeSucces= require('./router/stripeSucces')
-
+require("dotenv").config()
 const session = require('express-session');
 const cors = require('cors');
 const modelProdus = require('./modele/modelProdus')
@@ -40,7 +40,7 @@ hbs.registerHelper('greaterThan',function(a,b,options){
 })
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_SECRET,
   cookie:{
     sameSite:"strict"
   }
