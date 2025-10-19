@@ -73,7 +73,9 @@ Before running the project, make sure you have the following installed and confi
    cd Heaven-Scents
 
 3. **Install dependencies**
+   ```bash
    npm install
+   ```
 
 4. **Create a `.env` file** in the root directory and add the following environment variables:
 
