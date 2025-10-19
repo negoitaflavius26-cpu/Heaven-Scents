@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link">
+                    <i class="fa fa-house" style="color: #000000;"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/produse" class="nav-link">
+                    <i class="fa-solid fa-spray-can-sparkles" style="color: #000000;"></i>
+                    <span class="link-text">Produse</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/comenzi" class="nav-link">
+                    <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                    <span class="link-text">Comenzi & Livrare</span>
+                </a>
+            </li>
+            
+                <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-arrow-trend-up" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/wallet" class="nav-link">
+                    <i class="fa-solid fa-wallet" style="color: #000000;"></i>
+                    <span class="link-text">Finante</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </nav>
+    <main >
+    <h1>Update</h1>
+    <form action="/admin/dasboard/produse/actualizare" method="post" name="picture"  enctype="multipart/form-data">
+<div class="pictures">
+  <h2>Poze</h2>
+  <h4>Incarca fotografii pentru noul produs</h4>
+  <div class="picture-upload" id="upload-image">
+    <label for="input-file">Poza noua</label>
+    <input type="file" name="picture" placeholder="Incarca o noua poza" id="input-file">
+    {{#if detalii.picture}}
+      <img class="pozaa" src="{{detalii.picture}}" alt="">
+    {{/if}}
+  </div>
+</div>
+<div class="error-message" style="font-size: 23px; color:red">{{error}}</div>
+<div class="details">
+<h2>Detalii Produs</h2>
+<h4>Completeaza toate campurile pentru a putea informa clientii despre noul nostru produs</h4>
+    <ul>
+        <li>
+            <label for="brand" >Brand:</label>
+            <input type="text" value="{{detalii.brand}}" name="brand" id="brand" style="font-size: 19px;">
+        </li>
+    <li>
+        <label for="title">Titlu:</label>
+        <input type="text" value="{{detalii.title}}" name="title" id="title"  style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="type">Tip Parfum:</label>
+        <input type="text" value="{{detalii.type}}" name="type" id="type" style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="type">Categorie:</label>
+        <input type="text" value="{{detalii.categorie}}"  name="categorie" id="type" style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="description">Descriere:</label>
+        <input type="text" value="{{detalii.description}}" name="description" id="description"  style="font-size: 19px;" >
+    </li>
+    <li>
+        <label for="composition">Compozitia Parfumului:</label>
+        <input type="text" value="{{detalii.composition}}" name="composition" id="composition"  style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="story">Povestea Parfumului:</label>
+        <input type="text" value="{{detalii.story}}" name="story" id="story"  style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="price">Pret:</label>
+        <input type="number" value="{{detalii.price}}" name="price" id="price"    style="font-size: 19px;">
+        <label for="quantity">Cantitate:</label>
+        <input type="number" value="{{detalii.quantity}}" name="quantity" id="quantity"  style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="price2">Pret2:</label>
+        <input type="number" value="{{detalii.price2}}" name="price2" id="price"   style="font-size: 19px;">
+        <label for="quantity2">Cantitate:</label>
+        <input type="number" value="{{detalii.quantity2}}" name="quantity2" id="quantity"  style="font-size: 19px;">
+    </li>
+    <li>
+        <label for="price3">Pret3:</label>
+        <input type="number" value="{{detalii.price3}}" name="price3" id="price"   style="font-size: 19px;">
+        <label for="quantity3">Cantitate:</label>
+        <input type="number" value="{{detalii.quantity3}}" name="quantity3" id="quantity"  style="font-size: 19px;">
+    </li>
+    </ul>
+    <span id="err-msg"></span>
+    <div class="butonase">
+<div class="btn">
+    <input type="hidden" name="updateID" value="{{detalii._id}}">
+    <button type="submit" class="updateButon">Update</button>
+</div>
+
+</form>
+<form action="/admin/dasboard/produse/sterge" method="post">
+<div class="sterge">
+    <input type="hidden" name="stergeID" value="{{detalii._id}}">
+    <button type="submit" class="stergeButon">Sterge Produs</button>
+</div>
+</div>
+</form>
+
+</div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,142 @@
+
+
+.comanda-informatii{
+    margin-left: 30%;
+    padding-top: 80px;
+}
+
+.comanda{
+    background-color: grey ;
+    color: black;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+    margin-left: 60vw;
+}
+
+.comanda:hover{
+    transition: ease-out 0.3s;
+    background-color:  black ;
+    color: grey;
+}
+
+.judete{
+    width: 310px;
+    height: 50px;
+}
+
+.informatii{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 85%;
+    
+}
+
+.prefix
+{
+    font-size: 23px;
+    position: absolute;
+    margin-top: 82.4vh;
+    margin-left: 27.3vw;
+}
+
+
+.bara{
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly ;
+}
+
+.titlu{
+    padding-top: 9px;
+}
+
+.titlu-detalii{
+    padding-top: 50px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.produse {
+    position: absolute;
+    margin-left: 60%;
+    padding-top: 110px;
+    
+}
+
+.produs-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.produs-item{
+    padding-left: 14px;
+    border: 1px inset gray;
+    width: 400px;
+}
+
+
+.poza {
+    object-fit: contain;
+    
+}
+
+
+
+
+.produs-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 36px;
+}
+
+.sectiune {
+    
+    
+    display: flex;
+    
+  }
+  .tip{
+    position: absolute;
+    padding-top: 60px;
+  }
+  .sectiune :not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .brand{
+    padding-top: 15px;
+    font-size: large;
+  }
+
+  .input{
+    width: 300px;
+    height: 50px;
+}
+
+.input-container{
+    font-size: 30px;
+}
+
+.selectare{
+    font-size: larger;
+    font-weight: lighter;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.label{
+    font-size: 23px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.pret{
+    padding-top: 10px;
+    font-size: large;
+    
+}

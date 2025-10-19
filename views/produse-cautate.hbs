@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/produse-cautate.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <h1>Heaven Scents</h1>
+        <div class="search">
+        <form action="/home/cauta" method="get">
+            <input type="text"  class="cautare" name="cautaProdus" placeholder="Cauta un produs" >
+            
+        </form>
+        
+        </div>
+<div class="link-el">
+    {{#each variante}}
+        <a class="link" href="/home/categorie/{{this}}">{{this}}</a>
+    {{/each}}
+    <a class="link" href="/home/parfumuri">Parfumuri</a>
+    <a class="link" href="/home/branduri">Branduri</a>
+</div>
+        <div class="iconite ">
+            <p class="nume">{{nume}}</p>
+            <a href="/utilizator"><i class="fa-regular fa-user" style="color: #fafafa;"></i></a>
+            <a href="/preferate"><i class="fa-regular fa-heart" style="color: #ffffff;"></i></a>
+            <a href="/cos"><i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i></a>
+          </div>
+    </div>  
+
+<div class="cauta"><p>{{message}}</p></div>
+
+<div class="numar-produse"><p>{{numarProduse}}</p></div>
+
+<div class="mesaj"><p>{{mesajCautare}}</p></div>
+
+<div class="container">
+{{#each produs}}
+<div class="product-container">
+    
+    <div class="inima"> 
+        <form action="/preferate"  method="post">
+        <input type="hidden" name="adaugaPreferat"  value="{{this._id}}">
+        <button class="buton-adauga" type="submit"><i class="fa-regular fa-heart"  style="color: black;"></i></button>
+        </form>
+    </div>
+    
+    <a class="link" href="/home/parfumuri/produs/{{this._id}}"> 
+        <img src="{{this.picture}}" alt="{{this._id}}" class="product-image">
+        <p class="detalii">{{this.brand}}</p>
+        <h2 class="title">{{this.title}}</h2>
+        <p class="detalii">{{this.price}}-RON</p>
+    </a>
+</div>
+{{/each}}
+</div>
+
+<footer>
+  <div class="elemente">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Despre noi</h3>
+        <p>Detinem un magazin de parfumuri de inalta calitate si originale pentru femei si barbati</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Contacteaza-ne</h3>
+        <p>Telefon: 0729336593</p>
+        <p>Email: scentsheaven9@gmail.com </p>
+        <p>Adresa: Strada Cismelei 15</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

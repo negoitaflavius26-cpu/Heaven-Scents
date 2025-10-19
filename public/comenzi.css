@@ -1,0 +1,205 @@
+:root{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    --text-primary:#b6b6b6;
+    --text-secondary:#ececec;
+    --bg-primary:#23232e;
+    --bg-secondary:#141418
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+}
+h1{
+    text-align: center;
+}
+body{
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #6649b8;
+}
+
+.nav-bar{
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color:  rgb(12, 78, 82);
+    transition: 200ms ease;
+}
+.navbar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;    
+}
+.link-text{
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    font-size: 2em;
+    transition: transform 0.5s ease-in-out;;
+}
+.nav-link:hover i {
+    transform: scale(1.2);
+  }
+
+.nav-bar:hover{
+    width: 16rem;
+}
+
+.nav-link:hover .link-text {
+    display: block;
+    
+}
+
+.comanda-container{
+    border: 1px solid grey;
+    margin-top: 30px;
+    position: relative; /* Set the container to relative positioning */
+    margin-right: 20%;
+    margin-left: 25%;
+    
+}
+
+
+
+.detalii{
+    margin-left: 10px;
+}
+
+
+.produse {
+    padding-top: 59px;
+  }
+  
+
+
+.imagine{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+
+.titlu{
+    padding-left: 120px;
+    position: absolute;
+    padding-top: 35px;
+    text-decoration: none;
+}
+
+.sectiune {
+    position: absolute;
+    margin-left: 10px;
+    display: flex;
+}
+
+.sectiune :not(:last-child) {
+    margin-right: 20px;
+}
+
+.ascuns{
+    display:none
+}
+
+.informatii{
+    border: none;
+    background: none;
+    position: absolute;
+    padding-left: 60%;
+    top: 100px;
+}
+
+.butonSterge{
+    margin-left: 80%;
+    border: none;
+    background-color: black;
+    color: white;
+    height: 29px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.email{
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.variatii {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    padding-left: 350px;
+    padding-top: 75px;
+}
+
+.id{
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.cauta-comanda{
+    text-align: center;
+margin-left: 40vw;
+width: 300px;
+height: 40px;
+border-radius: 10px;
+}
+
+.data{
+    margin-left: 10px;
+}
+
+.sectiuni{
+    display: flex;
+    margin-left: 25%;
+    color: black;
+}
+
+.sectiuni a:not(:last-child) {
+    margin-right: 20px;
+    color: black;
+}
+  
+  .sectiuni a {
+    display: inline-block;
+    color: black;
+  }
+
+
+.linie{
+    border: 2px solid black;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 20%;
+}

@@ -1,0 +1,394 @@
+:root{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    --text-primary:#b6b6b6;
+    --text-secondary:#ececec;
+    --bg-primary:#23232e;
+    --bg-secondary:#141418
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+}
+h1{
+    text-align: center;
+}
+body{
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #6649b8;
+}
+
+.nav-bar {
+    width: 5rem;
+    height: 100vh; /* Adjusted height to leave space for scrolling */
+    position: fixed;
+    background-color: rgb(12, 78, 82);
+    transition: 200ms ease;
+  }
+.navbar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;    
+}
+.link-text{
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    font-size: 2em;
+    transition: transform 0.5s ease-in-out;;
+}
+.nav-link:hover i {
+    transform: scale(1.2);
+  }
+
+.nav-bar:hover{
+    width: 16rem;
+}
+
+.nav-link:hover .link-text {
+    display: block;
+    
+}
+
+.upload {
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #1e1e24;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.incarca{
+    text-decoration: none;
+}
+
+.msg{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.pictures{
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 13rem;
+    margin: 10px;
+    padding-left: 23px;
+}
+.picture-upload{
+    position: relative;
+    left: 25rem;
+    bottom: 6rem;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 4px;
+    cursor: pointer;
+    pointer-events: all;
+}
+.picture-upload:hover{
+    
+    border: 1px solid coral;
+}
+.fa-camera {
+    font-size: 30px;
+}
+.picture-msg{
+    position: relative;
+    text-align: center;
+    top: 1rem;
+}
+input[type="file"] {
+    display: none;
+}
+
+
+.video{
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 13rem;
+    margin: 10px;
+    margin-top: 100px;
+    padding-left: 23px;
+}
+.video-upload{
+    border: 1px solid black;
+    position: relative;
+    left: 25rem;
+    bottom: 6rem;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 4px;
+    cursor: pointer;
+    pointer-events: all;
+}
+.video-upload:hover{
+    
+    border: 1px solid coral;
+}
+.fa-circle-play {
+    font-size: 35px;
+  }
+.picture-msg{
+    position: relative;
+    text-align: center;
+    top: 1rem;
+}
+
+.details {
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 59rem;
+    margin: 10px;
+    margin-top: 100px;
+    padding-left: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.details label {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 150px;
+    vertical-align: top;
+}
+
+.details input,
+.details select{
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+    width: 1000px;
+}
+
+.details textarea{
+    height: 100px;
+    width: 1000px;
+}
+
+ul {
+    list-style: none;
+}
+
+.details input[type="number"]{
+    width: min-content;
+    border-radius: 4px;
+}
+
+
+.container-produse{
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    cursor: pointer ;
+    padding-left: 0;
+    
+}
+
+.container-produse img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.imagine-update{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.comenzi-statistici{
+    text-align: center;
+    height: 1000px;
+}
+
+.cautare-admin {
+text-align: center;
+margin-left: 40vw;
+width: 300px;
+height: 40px;
+border-radius: 10px;
+  }
+
+  .magazin-statistici {
+    display: flex;
+    justify-content: center;
+    width: 60%; 
+    margin: 0 auto; 
+    padding: 0 10%; 
+  }
+
+  .pozaa{
+    padding-top: 10px;
+    width: 60px;
+    height: 120px;
+    object-fit: contain;
+  }
+  .linie{
+    border: 2px solid black;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 7px;
+}
+
+
+  .preferate-item {
+    padding-top: 10px;
+    display: flex;
+    margin-left: 30%;
+  }
+  .email {
+    font-weight: bold;
+    padding-top: 30px;
+    padding-left: 18px;
+  }
+  .poza {
+    width: 50px;
+    height: auto;
+    margin-top: 10px;
+    object-fit: contain;
+  }
+ 
+
+  .detalii{
+    color: black;
+  }
+
+  .title{
+    color: black;
+    
+  }
+
+  .link{
+    text-decoration: none;
+  }
+  .updateButton{
+    width: 200px;
+  }
+
+  .buton{
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .buton:hover{
+    transition: ease-out 0.3s;
+    background-color: grey ;
+    color: black;
+}
+
+.btn{
+    margin-left: 100px;
+}
+
+
+.updateButon{
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.updateButon:hover{
+    transition: ease-out 0.3s;
+    background-color: grey ;
+    color: black;
+}
+
+.stergeButon{
+    background-color: grey ;
+    color: black;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.stergeButon:hover{
+    transition: ease-out 0.3s;
+    background-color:black ;
+    color: white;
+}
+
+.butonase{
+    display: flex;
+    padding-left: 100px;
+}
+
+.sterge{
+    padding-left: 400px;
+}
+
+.nav-item-x{
+    padding-top: 400px;
+}

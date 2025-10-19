@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link">
+                    <i class="fa fa-house" style="color: #000000;"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/produse" class="nav-link">
+                    <i class="fa-solid fa-spray-can-sparkles" style="color: #000000;"></i>
+                    <span class="link-text">Produse</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/comenzi" class="nav-link">
+                    <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                    <span class="link-text">Comenzi & Livrare</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                 <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-arrow-trend-up" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+    
+        </ul>
+     
+
+    </nav>
+    <main >
+    <h1>Produse</h1>
+        <form action="/admin/cauta" method="get">
+        <input type="text" class="cautare-admin" name="cautaProdus" placeholder="Cauta un produs" >
+        </form>
+    <div class="upload">
+    <a class="incarca" href="/admin/dashboard/produse/incarca">
+        <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+        <span class="msg">Incarca un produs</span>
+        </a>
+        </div>
+        <div class="container">
+        {{#each produse}}
+        <div class="container-produse">
+            <a class="link" href="/admin/dasboard/produse/{{this._id}}">
+        <img src="{{this.picture}}" alt="{{this.id}}"   class="product-image">
+        <p class="detalii">{{this.brand}}</p>
+        <h2 class="title">{{this.title}}</h2>
+        <p class="detalii">{{this.price}}-RON</p>
+        </a>
+        </div>
+        {{/each}}
+        </div>
+    </main>
+</body>
+</html>

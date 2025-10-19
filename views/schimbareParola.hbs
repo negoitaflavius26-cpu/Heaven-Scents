@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/schimbare-parola.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <h1>Heaven Scents</h1>
+        <div class="search">
+        <form action="/home/cauta" method="get">
+            <input type="text" class="cauta" name="cautaProdus" placeholder="Cauta un produs" >
+            
+        </form>
+        
+        </div>
+<div class="link-el">
+    {{#each variante}}
+        <a class="link" href="/home/categorie/{{this}}">{{this}}</a>
+    {{/each}}
+    <a class="link" href="/home/parfumuri">Parfumuri</a>
+    <a class="link" href="/home/branduri">Branduri</a>
+</div>
+        <div class="iconite ">
+            <p class="nume">{{nume}}</p>
+            <a href="/utilizator"><i class="fa-regular fa-user" style="color: #fafafa;"></i></a>
+            <a href="/preferate"><i class="fa-regular fa-heart" style="color: #ffffff;"></i></a>
+            <a href="/cos"><i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i></a>
+          </div>
+    </div> 
+
+
+    
+<div class="autentificare">
+       <h1>Resetare Parola</h1>
+    <form action="/resetare-parola" method="post">
+    <div class="input">
+        <label for="email">Email</label>
+        <input type="text" class="emailValue" value="{{cautareClient.email}}" readonly>
+        <label for="parola">Parola:</label>
+    <input type="password" name="parola" placeholder="Introduceti o parola noua">
+        <label for="verificaParola">Verificare parola:</label>
+    <input type="password" name="verificaParola" placeholder="Reintroduceti parola">
+    </div>
+    <div class="btn">
+        
+    <input type="hidden" name="clientId" value="{{cautareClient._id}}">
+    <button>Schimba parola</button>
+    </div>
+    </form>
+    
+    
+    
+    <h3 style="text-align: center; color:red;">{{mesajPersoana}}</h3>
+    </div>
+
+
+
+
+</body>
+</html>

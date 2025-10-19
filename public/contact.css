@@ -1,0 +1,301 @@
+/* pentru nav-bar*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+
+
+h1{
+    color: goldenrod;
+    padding: 2.6rem;
+}
+.link-el{
+    text-decoration: underline;
+    font-size: 1rem;
+    display: flex;
+    padding: 5px 10px;
+    
+    top: 55px;
+    right: 60rem;
+}
+
+.link-el a:not(:last-child){
+    margin-right: 20px;
+}
+.link-el a{
+    color: white;
+}
+
+.nume{
+    color: red;
+}
+
+.iconite {
+    display: flex;
+    position: absolute;
+    margin-left: 1400px;
+  }
+
+.iconite p{
+    top: 13px;
+    font-size: larger;
+}
+  .iconite a {
+    margin: 0 40px;
+    top: 10px; /* Adjust the margin as per your desired spacing */
+  }
+
+.iconite p:not(:last-child){
+    padding-right: 10px;
+}
+  
+  /* Additional styling for the icon elements if needed */
+  .iconite i {
+    font-size: 30px; /* Adjust the font size as per your requirement */
+  }
+
+i{
+    color: green;
+}
+
+
+
+a:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.nav-bar{
+    height: 160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    position: relative;
+}
+
+.cautare{
+    right: 100px;
+    width: 900px;
+    height: 40px;
+    border: none;
+    top: 10px;
+    border-radius: 2px;
+    
+    
+}
+/* pentru nav-bar*/
+
+
+#user{
+    color: red;
+    font-size: larger;
+    position: absolute;
+    margin-left: 1250px;
+    cursor: pointer;
+}
+
+#user:hover{
+    text-decoration: underline;
+}
+
+
+.text{
+    color: black;
+    text-align: center;
+}
+.detalii-utilizator {
+    padding-top: 100px;
+    display: flex;
+    margin-left: 25%;
+  }
+  
+  .detalii-utilizator:not(:last-child) {
+    margin-right: 25%;
+  }
+  
+  .detalii-utilizator .email {
+    margin-left: 78%;
+  }
+
+.deconectareUtilizator{
+    margin-left: 69%;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.comenzi{
+    margin-top: 20px;
+    margin-left: 25%;
+    border: 1px ridge gray;
+    margin-right: 25%;
+}
+
+.imagine{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.sectiune {
+    position: absolute;
+    padding-top: 40px;
+    display: flex;
+    margin-left: 100px;
+  }
+  
+  .sectiune :not(:last-child) {
+    margin-right: 20px;
+  }
+
+.tip{
+    position: absolute;
+    padding-top: 60px;
+    padding-left: 100px;
+}
+
+.cumpara{
+    position: absolute;
+    margin-left: 700px;
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.sectiuni{
+    margin-top: 30px;
+    display: flex;
+    margin-left: 25%;
+}
+.linie{
+    border: 2px solid black;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.sectie{
+    color: black;
+}
+.sectiuni a:not(:last-child) {
+    margin-right: 20px;
+}
+
+.buton button:not(:last-child){
+    margin-right: 400px;
+}
+  
+  .sectiuni a {
+    display: inline-block;
+  }
+
+
+.contact-container{
+    position: absolute;
+    margin-left: 25%;
+    padding-top: 60px;
+}
+
+.adresa-facturare2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-left: 700px;
+    padding-top: 20px;
+}
+
+
+.input{
+    display: flex;
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+}
+
+.variatii {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    padding-left: 480px;
+    padding-top: 50px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.butonUpdate{
+    margin-left: 700px;
+    position: absolute;
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.butonUpdate:hover{
+    transition: ease-out 0.3s;
+    background-color: grey ;
+    color: black;
+}
+
+
+.butonSterge{
+    background-color: grey ;
+    color: black;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.butonSterge:hover{
+    transition: ease-out 0.3s;
+    background-color:  black ;
+    color: grey;
+}
+
+.buton{
+    display: flex;
+    padding-top: 100px;
+}
+
+.elemente{
+    background-color: black;
+    padding-bottom: 30px;
+  }
+    footer {
+      position: relative;
+      margin-top: 900px;
+      margin-bottom: 0;
+      width: 100%; 
+      color: white;
+      text-align: center;
+    }
+    footer h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding-top: 30px;
+    }
+    footer p {
+      font-size: 16px;
+    }
+  

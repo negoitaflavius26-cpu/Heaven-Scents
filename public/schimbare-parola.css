@@ -1,0 +1,166 @@
+
+/* pentru nav-bar*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    
+}
+
+body{
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(193,154,154,0.9500175070028011) 0%, rgba(122,168,177,1) 0%);
+}
+
+
+
+h1{
+    color: goldenrod;
+    padding: 2.6rem;
+}
+.link-el{
+    text-decoration: underline;
+    font-size: 1rem;
+    display: flex;
+    padding: 5px 10px;
+    
+    top: 55px;
+    right: 61.3rem;
+}
+
+.link-el a:not(:last-child){
+    margin-right: 20px;
+}
+.link-el a{
+    color: white;
+}
+
+.nume{
+    color: red;
+}
+
+.iconite {
+    display: flex;
+    position: absolute;
+    margin-left: 1400px;
+  }
+
+.iconite p{
+    top: 13px;
+    font-size: larger;
+}
+  .iconite a {
+    margin: 0 40px;
+    top: 10px; /* Adjust the margin as per your desired spacing */
+  }
+
+.iconite p:not(:last-child){
+    padding-right: 10px;
+}
+  
+  /* Additional styling for the icon elements if needed */
+  .iconite i {
+    font-size: 30px; /* Adjust the font size as per your requirement */
+  }
+
+i{
+    color: green;
+}
+
+
+
+a:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.nav-bar{
+    height: 160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    position: relative;
+}
+
+.cauta{
+    right: 110px;
+    width: 900px;
+    height: 40px;
+    border: none;
+    top: 10px;
+    border-radius: 2px;
+    
+    
+}
+/* pentru nav-bar*/
+
+
+.autentificare {
+    position: absolute;
+    margin-left: 40vw;
+    margin-top: 50px;
+    background: black;
+    border-radius: 10px;
+    width: 400px;
+    height: 500px;
+    margin-bottom: 10px;
+    color: white;
+    z-index: 1; 
+}
+
+.autentificare h1{
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+.autentificare input{
+    height: 40px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 20px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    width: 14rem;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 4px;
+    font-size: larger;
+    transition: background-color 0.4s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: goldenrod;
+    
+}
+
+.signup-link{
+    color:greenyellow;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.signup-link:hover {
+    color: goldenrod;
+    transition: color 0.2s;
+}
+
+.emailValue{
+    background-color: rgb(192, 192, 192);
+}

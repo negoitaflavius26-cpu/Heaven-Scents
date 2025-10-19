@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+
+:root{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    --text-primary:#b6b6b6;
+    --text-secondary:#ececec;
+    --bg-primary:#23232e;
+    --bg-secondary:#141418;
+
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative;
+}
+h1{
+    text-align: center;
+}
+body{
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #6649b8;
+}
+
+.nav-bar {
+    width: 5rem;
+    height: 100vh; /* Adjusted height to leave space for scrolling */
+    position: fixed;
+    background-color: rgb(12, 78, 82);
+    transition: 200ms ease;
+  }
+.navbar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;    
+}
+.link-text{
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    font-size: 2em;
+    transition: transform 0.5s ease-in-out;;
+}
+.nav-link:hover i {
+    transform: scale(1.2);
+}
+
+.nav-bar:hover{
+    width: 16rem;
+}
+
+.nav-link:hover .link-text {
+    display: block;
+    
+}
+.link{
+    color: black;
+}
+
+.sectiune {
+    padding-left: 40%;
+    padding-top: 40px;
+    display: flex;
+    margin-left: 100px;
+}
+
+.sectiune :not(:last-child) {
+    margin-right: 21px;
+}
+
+.istoric-comenzi{
+    margin-top: 100px;
+    margin-left: 25%;
+}
+
+.comenzi{
+    margin-top: 20px;
+    margin-left: 25%;
+    border: 1px ridge gray;
+    margin-right: 25%;
+}
+
+.imagine{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.sectie {
+    position: absolute;
+    padding-top: 20px;
+    display: flex;
+    margin-left: 100px;
+}
+
+.butonSectiune{
+   border: none;
+   background-color: white;
+   cursor: pointer;
+   font-size: 24px;
+   font-weight: bold;
+   text-decoration: underline red;
+}
+
+.sectie :not(:last-child) {
+    margin-right: 20px;
+}
+
+.tip{
+    position: absolute;
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.linie{
+    border: 2px solid black;
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 100px;
+}
+
+.sectiuni{
+    position: absolute;
+    margin-top: 70px;
+    display: flex;
+    margin-left: 25%;
+}
+
+.sectiuni form:not(:last-child) {
+    margin-right: 30px;
+}
+
+.sectiuni a {
+    display: inline-block;
+}
+
+.sectie{
+    color: black;
+}
+
+.contact-container{
+    position: absolute;
+    margin-left: 25%;
+    padding-top: 60px;
+}
+
+
+.butonUpdate{
+    margin-top: 20px;
+    position: absolute;
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.butonUpdate:hover{
+    transition: ease-out 0.3s;
+    background-color: grey ;
+    color: black;
+}
+
+
+.adresa-facturare2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-left: 700px;
+    padding-top: 20px;
+}
+
+
+
+.input{
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+}
+
+.variatii {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    padding-left: 400px;
+    padding-top: 53px;
+}
+
+

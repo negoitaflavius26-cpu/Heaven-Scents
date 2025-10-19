@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/comanda.css">
+    <title>Document</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="bara">
+        <h2>Heaven Scents</h2>
+        <h3>Pentru informatii suna la 0729336593</h3>
+    </div>
+
+    <h1 class="titlu-detalii">Detalii Plata</h1>
+  <div class="produse">
+  <div class="produs">
+    {{#each cos}}
+      <div class="produs-item">
+        <img src="{{this.picture}}" alt="" class="poza" style="height: 100px; width: 50px;">
+        <div class="produs-info">
+    <div class="sectiune">
+    <p style="font-size: larger;" class="brand">{{this.brand}}</p>
+    <h4 style="font-size: larger;" class="titlu">{{this.title}}</h4>
+    </div>
+          <p style="font-size: larger;" class="tip">{{this.type}}-{{this.variation.quantity}}ml</p>
+                  <h5 class="pret">
+        Pret:  {{this.variation.price}}RON
+    </h5>
+          <form action="/cos/sterge" method="post">
+          </form>
+        </div>
+      </div>
+    {{/each}}
+    {{#if totalPret}}
+    <h2>Total Comanda: {{totalPret}}RON</h2>
+    {{/if}}
+          {{#if error}}
+<div class="error-message" style="font-size: 23px; color:red">{{error}}</div>
+{{/if}}
+  </div>
+</div>
+<p class="prefix">+40</p>
+<form action="/cos/comanda" method="post">
+    <div class="comanda-informatii">
+    <div class="transport">
+    <h2>Transport</h2>
+    <input type="radio" id="fan"  name="transport" value="FAN Courier">
+    <label class="selectare" for="fan">FAN Courier</label><br>
+    <input type="radio" id="cargus" name="transport" value="Cargus">
+    <label class="selectare" for="cargus">Cargus</label><br>
+    <input type="radio" id="same" name="transport" value="SameDay">
+    <label class="selectare" for="same">SameDay</label>
+    </div>
+
+    <div class="plata">
+        <h2>Modalitate de plata</h2>
+        <input type="radio" id="card" name="plata" value="Card">
+        <label  class="selectare" for="card">Card:</label><br>
+        <input type="radio" id="livrare" name="plata" value="Livrare">
+        <label class="selectare" for="livrare">Plata la livrare:</label><br>
+    </div>
+
+    <div class="informatii">
+        <h2>Informatii</h2>
+        <label class="label" for="nume">Nume:</label>
+        <input class="input" type="text" name="nume" id="nume" style="font-size: larger;" value="{{detalii.nume}}" >
+        <label   class="label"for="prenume">Prenume:</label>
+        <input class="input" type="text" name="prenume" id="prenume" style="font-size: larger;" value="{{detalii.prenume}}">
+        <label  class="label" for="email">Email:</label>
+        <input class="input" type="text"  name="email" id="email" style="font-size: larger;" value="{{detalii.email}}">
+        <label  class="label" for="telefon">Telefon:</label>
+        
+        <input class="input"type="number" name="telefon" id="telefon" style="font-size: larger;" value="{{detalii.telefon}}" >
+        <label  class="label" for="judete">Judete:</label>
+        <select style="font-size: larger;" class="judete" name="judete" id="judete">
+  <option> </option>
+  <option value="alba">Alba</option>
+  <option value="arad">Arad</option>
+  <option value="arges">Arges</option>
+  <option value="bacau">Bacau</option>
+  <option value="bihor">Bihor</option>
+  <option value="bistrita-nasaud">Bistrita-Nasaud</option>
+  <option value="botosani">Botosani</option>
+  <option value="brasov">Brasov</option>
+  <option value="braila">Braila</option>
+  <option value="buzau">Buzau</option>
+  <option value="caras-severin">Caras-Severin</option>
+  <option value="calarasi">Calarasi</option>
+  <option value="cluj">Cluj</option>
+  <option value="constanta">Constanta</option>
+  <option value="covasna">Covasna</option>
+  <option value="dambovita">Dambovita</option>
+  <option value="dolj">Dolj</option>
+  <option value="galati">Galati</option>
+  <option value="giurgiu">Giurgiu</option>
+  <option value="gorj">Gorj</option>
+  <option value="harghita">Harghita</option>
+  <option value="hunedoara">Hunedoara</option>
+  <option value="ialomita">Ialomita</option>
+  <option value="iasi">Iasi</option>
+  <option value="ilfov">Ilfov</option>
+  <option value="maramures">Maramures</option>
+  <option value="mehedinti">Mehedinti</option>
+  <option value="mures">Mures</option>
+  <option value="neamt">Neamt</option>
+</select>
+        <label  class="label" for="localitate">Localitate:</label>
+        <input class="input" type="text" name="localitate" style="font-size: larger;" id="localitate" value="{{detalii.localitate}}"  >
+        <label  class="label" for="Adresa">Adresa:</label>
+        <input class="input" type="text" name="adresa" style="font-size: larger;" placeholder="Strada Nr Bl Sca Et Ap" id="adresa" value="{{detalii.adresa}}" >
+        <label  class="label" for="codPostal">Cod Postal:</label>
+        <input class="input" type="number" name="codPostal" style="font-size: larger;" id="codPostal" value="{{detalii.codPostal}}" >
+    </div>
+    </div>
+    <button class="comanda" type="submit" >Comanda-{{totalPret}}RON</button>
+    </form>
+
+    
+</body>
+</html>

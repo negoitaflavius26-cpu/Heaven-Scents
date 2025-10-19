@@ -1,0 +1,482 @@
+/* pentru nav-bar*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+
+
+h1{
+  color: goldenrod;
+  padding: 2.6rem;
+}
+.link-el{
+  text-decoration: underline;
+  font-size: 1rem;
+  display: flex;
+  padding: 5px 10px;
+  
+  top: 55px;
+  right: 60rem;
+}
+
+.link-el a:not(:last-child){
+  margin-right: 20px;
+}
+.link-el a{
+  color: white;
+}
+
+.nume{
+  color: red;
+    padding-top: 4.4px;
+}
+
+.iconite {
+  display: flex;
+  position: absolute;
+  margin-left: 1400px;
+}
+
+.iconite p{
+  top: 13px;
+  font-size: larger;
+}
+.iconite a {
+  margin: 0 40px;
+  top: 10px; /* Adjust the margin as per your desired spacing */
+}
+
+.iconite p:not(:last-child){
+  padding-right: 10px;
+}
+
+/* Additional styling for the icon elements if needed */
+.iconite i {
+  font-size: 30px; /* Adjust the font size as per your requirement */
+}
+
+i{
+  color: green;
+}
+
+
+
+a:hover{
+  cursor: pointer;
+  color: red;
+}
+
+.nav-bar{
+  height: 160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  position: relative;
+}
+
+input[type="text"]{
+  right: 100px;
+  width: 900px;
+  height: 40px;
+  border: none;
+  top: 10px;
+  border-radius: 2px;
+  
+  
+}
+/* pentru nav-bar*/
+#user:hover{
+  text-decoration: underline;
+}
+
+/*/home/parfumuri/produs */
+
+.picture{
+    width: 420px;
+    height: 420px;
+    object-fit: contain;
+    margin-left: 24vw;
+    margin-top: 45px;
+}
+.rating{
+    margin-left: 45vw;
+    font-size: large;
+    position: absolute;
+    padding: 10px;
+}
+.important{
+    position: absolute;
+    margin-top: 20px;
+    line-height: 2.5;
+    margin-left: 45vw;
+}
+
+.details{
+    position: absolute;
+    padding-top: 700px;
+    margin-left: 45vw;
+}
+
+span{
+    font-size: 30px;
+}
+
+.buton{
+margin-left: 45.8%;
+}
+
+.buyBtn{
+    
+    width: 380px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
+
+.buyBtn:hover{
+    transition: ease-out 0.3s;
+    background-color: grey ;
+    color: black;
+}
+
+#lineDetails {
+  padding-top: 275px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative; /* Adaugă această linie pentru a seta poziția relativă */
+}
+  
+  #description,
+  #composition,
+  #story {
+    position: absolute; /* Add this to position the child elements independently */
+    top: 100%; /* Add this to position the child elements below the parent container */
+  }
+
+  .brand-link{
+    color: black;
+  }
+  
+  #description {
+    margin-left: 15%;
+    margin-right: 10%; /* Keep the left-most position */
+    font-size: larger;
+  }
+  
+  #composition {
+    margin-left: 15%;
+    margin-right: 10%;
+    font-size: larger; /* Keep the left-most position */
+  }
+  
+  #story {
+    margin-left: 15%;
+    margin-right: 10%;
+    font-size: larger;/* Keep the right-most position */
+  }
+  
+  #lineDetails h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 50px;
+  }
+  
+.hidden {
+    display: none;
+}
+  
+  .detail {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 100px;
+    overflow: auto;
+  }
+
+.linie{
+    border: 2px solid black;
+    display: flex;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+}
+
+
+
+.elemente{
+  background-color: black;
+  padding-bottom: 30px;
+}
+  footer {
+    position: absolute;
+    padding-top: 200px;
+    margin-bottom: 0;
+    width: 100%; 
+    color: white;
+    text-align: center;
+  }
+  footer h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 30px;
+  }
+  footer p {
+    font-size: 16px;
+  }
+
+
+
+
+  .prices-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .prices {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .variation-container {
+    border: 1px solid #ccc;
+    width: 120px;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+
+  .price,
+  .price2,
+  .price3{
+    font-size: larger;
+    font-weight: bolder;
+  }
+
+#selected-content{
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.taital{
+  color: red;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 3fr);
+  max-width: 1200px;
+  cursor: pointer;
+  align-items:center;
+  margin-left: 10%;
+  margin-top: 300px;
+  gap: 10%;
+}
+
+
+.detalii_produs{
+  align-items: center;
+}
+
+
+
+.produs-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  height:fit-content;
+  
+}
+.produs-container img {
+  object-fit: contain;
+  height: 170px;
+  width: 100px;
+  margin-bottom: 10px;
+  
+}
+
+.title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  white-space: nowrap;
+  
+}
+
+.produs-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.inima{
+  position: absolute;
+  top: 0;
+  padding-left: 10rem;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.buton-adauga{
+  border: none;
+  background-color: white;
+  font-size: 20px;
+}
+
+.interes{
+  margin-top: 250px;;
+  margin-left: 10.4%;
+  position: absolute;
+  
+}
+
+.vizionare{
+  
+  white-space: nowrap;
+  margin-bottom: 360px;
+  position: absolute;
+}
+
+.detalii{
+  color: black;
+}
+
+.title{
+  color: black;
+}
+.link{
+  text-decoration: none;
+}
+.selectVariation{
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  display: flex;
+  cursor: pointer;
+}
+
+.mesajul{
+  color: red;
+}
+
+.selectVariation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.selectVariation button:last-child {
+  font-weight: bold;
+}
+
+.link-produse{
+  text-decoration: none;
+  color: black;
+  
+}
+
+.butonProdus{
+  width: 140px;
+  height: 30px;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+  background: grey;
+  margin-top: 50px;
+  margin-left: 1;
+}
+
+.butonProdus:hover{
+  cursor: pointer;
+  background-color: black;
+  transition: ease-out 0.3s;
+  color: white ;
+  
+}
+
+
+
+.sectiune {
+  position: absolute;
+  padding-top: 360px;
+  display: flex;
+  margin-left: 867px;
+}
+
+.sectiune :not(:last-child) {
+  margin-right: 200px;
+}
+.cantitate{
+  padding-top: 12px;
+}
+
+.pret{
+  font-size: 32px;
+}
+
+.review{
+  text-decoration: none;
+  color: lightsalmon;
+}
+.pareri{
+  font-weight: bolder;
+  font-size: 22px;
+  margin-left: 25%;
+  padding-top: 220px;
+}
+
+#parere{
+  width: 400px;
+  height: 100px;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.parerile{
+  padding-top: 20px;
+}
+
+.distanta{
+  padding-top: 30px;
+}
+
+.opinii{
+  margin-right: 70%;
+}
+
+
+.persoana{
+  font-size: small;
+  padding-top: 10px;
+  display: flex;
+}
+
+.persoana p:not(:last-child){
+  margin-right: 30px;
+}
+
+.field{
+  display: flex;
+}
