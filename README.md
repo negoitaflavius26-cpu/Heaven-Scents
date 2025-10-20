@@ -48,7 +48,7 @@ The principal functionalities of this project are:
 - **Multer** – file upload handling  
 - **Cloudinary** – cloud image storage  
 - **Bcrypt & JWT** – authentication and security  
-- **Bootstrap / CSS** – responsive front-end design  
+- **CSS** – responsive front-end design  
 - **Dotenv** – environment variable management  
 
 ###  Installation & Setup
