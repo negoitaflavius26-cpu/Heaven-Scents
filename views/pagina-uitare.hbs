@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/acasa.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <h1>Heaven Scents</h1>
+        <div class="search">
+        <form action="/home/cauta" method="get">
+            <input type="text" class="cauta" name="cautaProdus" placeholder="Cauta un produs" >
+            
+        </form>
+        
+        </div>
+<div class="link-el">
+    {{#each variante}}
+        <a class="link" href="/home/categorie/{{this}}">{{this}}</a>
+    {{/each}}
+    <a class="link" href="/home/parfumuri">Parfumuri</a>
+    <a class="link" href="/home/branduri">Branduri</a>
+</div>
+        <div class="iconite ">
+            <p class="nume">{{nume}}</p>
+            <a href="/utilizator"><i class="fa-regular fa-user" style="color: #fafafa;"></i></a>
+            <a href="/preferate"><i class="fa-regular fa-heart" style="color: #ffffff;"></i></a>
+            <a href="/cos"><i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i></a>
+          </div>
+    </div> 
+
+<div class="uitareParola"> 
+    <h2 class="mesaj-uitare">Ai uitat parola?</h2>
+    <p class="mesajul">Intoduceti adresa de email a contului dumneavoastra. Noi va vom trimite un link pentru configurarea parolei</p>
+    <div class="grupa">
+    <label for="email" class="emailul">E-mail</label>
+    <div class="input">
+    <form action="/account/login/parola-uitata" method="post">
+    <input  type="text" name="email" class="inputEmail" placeholder="Introduceti adresa de email">
+    <h3 class="mesajEroare">{{error}} {{mesajPersoana}}</h3>
+    <input class="butonUitare" type="submit" value="Trimite">
+    </div>
+    </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>

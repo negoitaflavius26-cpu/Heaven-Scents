@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        <style>
+  
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+
+.produse {
+    
+    padding-top: 40px;
+    color: black;
+}
+
+.produs-lista {
+  
+    width: 500px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+    border: 1px ridge gray;
+    color: black;
+}
+
+
+.poza{
+  padding-top: 10px;
+  object-fit: contain;
+  padding-left: 10px;
+  height: 200px;
+  width: 90;
+}
+
+.selected-variation{
+    position: absolute;
+    color: black;
+    padding-left: 20px;
+}
+
+      .tip{
+        padding-left: 20px;
+      }
+
+.sectiune {
+    position: absolute;
+    padding-top: 30px;
+    display: flex;
+    padding-left: 20px;
+    color: black;
+    
+  }
+
+  .doilea{
+    padding-top: 50px;
+  }
+  
+  .sectiune p:not(:last-child) {
+    margin-left: 20px;
+    color: black;
+  }
+
+  .detalii-persoana{
+    position: absolute;
+    padding-top: 30px;
+color: black;
+padding-left: 20px;
+  }
+
+.primul{
+  display: flex;
+}
+
+
+
+.estimare{
+  padding-left: 20px;
+  color: black;
+}
+</style>
+</head>
+<body>
+    <h1 style="text-align: center;" >Heaven Scents</h1>
+    <h4 style="text-align: center;">Va multumim pentru comanda dumneavoastra</h4>
+<!-- comanda-html.hbs -->
+<div class="produse">
+<div class="produs-lista">
+  <h3 style="text-align: center;">ID Comanda: {{detalii.idComanda}}</h3>
+    {{#each produs}}
+        <div class="primul">
+          <img src="{{this.picture}}" alt="" class="poza" >
+          <div class="doilea">
+    <div class="sectiune">
+    <p class="brand">{{this.brand}}</p>
+    <h4 class="titlu">{{this.title}}</h4>
+    </div>
+    <p class="tip">{{this.type}}</p>
+                  <p class="selected-variation">
+        Cantitate:{{this.variation.quantity}} ml
+        Pret: {{this.variation.price}} Ron
+    </p>
+    </div>
+    
+    
+    </div>
+    {{/each}}
+    
+ <div style="text-align: center;" class="detalii-persoana">
+      <p> Data:{{detalii.data}}</p>
+      <p> Ora:{{detalii.ora}}</p>
+      <p> Nume:{{detalii.nume}}</p>
+      </div>
+
+      <div style="text-align: center;" class="estimare">
+        <h3>Total de plata: {{detalii.total}}-Ron</h3>
+        <h2>Estimare Livrare: {{estimareLivrare}}</h2>
+      </div>
+    </div>
+               
+    </div>
+    </div>
+
+
+</body>
+</html>

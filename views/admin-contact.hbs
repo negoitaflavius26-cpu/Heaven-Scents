@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin-client.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+         <nav class="nav-bar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link">
+                    <i class="fa fa-house" style="color: #000000;"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/produse" class="nav-link">
+                    <i class="fa-solid fa-spray-can-sparkles" style="color: #000000;"></i>
+                    <span class="link-text">Produse</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/comenzi" class="nav-link">
+                    <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                    <span class="link-text">Comenzi & Livrare</span>
+                </a>
+            </li>
+            
+                <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-arrow-trend-up" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+
+        </ul>
+
+
+    </nav>
+    <main>
+    <div class="sectiune">
+    <h1>{{utilizator.nume}}</h1>
+    <h1>{{utilizator.prenume}}</h1>
+    </div>
+    <div class="sectiuni">
+    
+    <form action="/admin/utilizator/{{utilizator.email}}" method="post">
+    <input type="hidden" name="cautaClient" value="{{utilizator.email}}">
+    
+  <button class="butonSectiune" type="submit"> Istoric Comenzi</button>
+  </form>
+ 
+  <form action="/admin/utilizator/contact/{{utilizator.email}}" method="post">
+  <input type="hidden" name="cautaClient" value="{{utilizator.email}}">
+  
+  <button class="butonSectiune" type="submit">Date Contact</button>
+  </form>
+</div>
+
+<span class="linie"></span>
+<form action="/admin/utilizator/contact/actualizeaza/{{utilizator.email}}" method="post">
+<div class="contact-container">
+    <div class="autentificare">
+        <h2>Date de autentificare</h2>
+        <br>
+        <br>
+        <h3>Email:</h3>
+        <br>
+        
+        <input class="input" type="text" name="email" value="{{utilizator.email}}">
+    </div>
+    <div class="informatii">
+        <br>
+        <h2>Mobil/telefon</h2>
+        <br>
+        <input class="input" type="text" name="telefon" value="{{utilizator.telefon}}">
+    </div>
+        <div class="adresa-facturare2">
+            <br>
+        <h3>Nume</h3>
+        <input class="input" type="text" name="nume"  value="{{utilizator.nume}}">
+        <br>
+        <br>
+        <h3>Oras sau localitate</h3>
+        <input class="input" type="text" name="localitate" value="{{utilizator.localitate}}">
+        <br>
+        <br>
+        <h3>Cod postal</h3>
+        <input class="input" type="text" name="codPostal" value="{{utilizator.codPostal}}">
+    </div>
+    <div class="adresa-facturare">
+        <br>
+        <h2>Adresa de facturare</h2>
+        <br>
+        <h3>Prenume</h3>
+        <input  class="input" type="text" name="prenume"  value="{{utilizator.prenume}}">
+        <br>
+        <br>
+        <h3>Adresa</h3>
+        <input class="input" type="text" name="adresa" value="{{utilizator.adresa}}">
+        <br>
+        <br>
+        <h3>Judet</h3>
+        <input class="input" type="select" name="judet" value="{{utilizator.judete}}">
+    </div>
+    <div class="buton">
+        <input type="hidden" name="updateContact" value="{{utilizator.email}}">
+        <button type="submit" class="butonUpdate">Salveaza Modificarile</button>
+    </div>
+    </form>
+</div>
+
+    </main>
+</body>
+</html>

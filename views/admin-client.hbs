@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin-client.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+     <nav class="nav-bar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link">
+                    <i class="fa fa-house" style="color: #000000;"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/produse" class="nav-link">
+                    <i class="fa-solid fa-spray-can-sparkles" style="color: #000000;"></i>
+                    <span class="link-text">Produse</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/comenzi" class="nav-link">
+                    <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                    <span class="link-text">Comenzi & Livrare</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-arrow-trend-up" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+               <li class="nav-item">
+                <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-xmark" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </nav>
+    <main>
+    <div class="sectiune">
+    <h1>{{utilizator.nume}}</h1>
+    <h1>{{utilizator.prenume}}</h1>
+    </div>
+<div class="sectiuni">
+    
+    <form action="/admin/utilizator/{{utilizator.email}}" method="post">
+    <input type="hidden" name="cautaClient" value="{{utilizator.email}}">
+    
+<button class="butonSectiune"  type="submit"> Istoric Comenzi</button>
+</form>
+
+<form action="/admin/utilizator/contact/{{utilizator.email}}" method="post">
+<input type="hidden" name="cautaClient" value="{{utilizator.email}}">
+
+<button class="butonSectiune"  type="submit">Date Contact</button>
+</form>
+</div>
+
+<span class="linie"></span>
+
+
+
+{{#each comenzi}}
+<div class="comenzi">
+    {{#each this.produse}}
+    <a class="link" href="/admin/dasboard/products/{{this.produse._id}}">
+        <div class="produse">
+                 <div class="variatii">
+          <p class="pret">{{this.quantity}}ml-{{this.price}}Ron</p>
+        </div>
+    <p class="tip">{{this.produse.type}}</p>
+    <div class="sectie">
+    <p class="brand">{{this.produse.brand}}</p>
+    <h4 class="titlu">{{this.produse.title}}</h4>
+    </div>
+    <img src="{{this.produse.picture}}" class="imagine" alt="">
+    </div>
+    </a>
+    {{/each}}
+    <h4>Total: {{this.totalPret}} RON</h4>
+</div>
+{{/each}}
+    </main>
+</body>
+</html>

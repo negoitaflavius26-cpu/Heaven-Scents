@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/produs.css">
+    <title>produs Details</title>
+    <script src="../frontEnd/produsPge.js"></script>
+</head>
+<body>
+    <div class="nav-bar">
+        <h1>Heaven Scents</h1>
+        <div class="search">
+        <form action="/home/cauta" method="get">
+            <input type="text" name="cautaProdus" placeholder="Cauta un produs" >
+            
+        </form>
+        
+        </div>
+<div class="link-el">
+    {{#each variante}}
+        <a class="link" href="/home/categorie/{{this}}">{{this}}</a>
+    {{/each}}
+    <a class="link" href="/home/parfumuri">Parfumuri</a>
+    <a class="link" href="/home/branduri">Branduri</a>
+</div>
+        <div class="iconite ">
+            <p class="nume">{{nume}}</p>
+            <a href="/utilizator"><i class="fa-regular fa-user" style="color: #fafafa;"></i></a>
+            <a href="/preferate"><i class="fa-regular fa-heart" style="color: #ffffff;"></i></a>
+            <a href="/cos"><i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i></a>
+          </div>
+    </div> 
+{{#each pret}}
+
+  <div class="sectiune">
+  <p style="font-size: larger;" class="cantitate">{{this.quantity}}ml</p>
+  <h2  class="pret">{{this.price}}Ron</h2>
+</div>
+
+{{/each}}
+<div class="important">
+  <a class="review" href="#review">
+    <span class="star" onclick="setRating(1)">&#9733;</span>
+    <span class="star" onclick="setRating(2)">&#9733;</span>
+    <span class="star" onclick="setRating(3)">&#9733;</span>
+    <span class="star" onclick="setRating(4)">&#9733;</span>
+    <span class="star" onclick="setRating(5)">&#9733;</span>
+    </a>
+    <a class="brand-link" href="/home/branduri/{{produs.brand}}"><p class="brand">Brand:{{produs.brand}}</p></a>
+    <h2 class="title"> {{produs.title}}</h2>
+    <p class="type">Tip:{{produs.type}}</p>
+<div class="prices-container">
+<div class="variation-container">
+  <div class="variation1">
+    <form action="/home/parfumuri/produs/{{produs._id}}/{{produs.quantity}}/{{produs.price}}" method="POST">
+      <input type="hidden" id="quantity1" name="quantity" value="{{produs.quantity}}">
+      <input type="hidden" id="price1" name="price" value="{{produs.price}}">
+      <input type="hidden" name="produs" value="{{produs._id}}">
+      <button type="submit" class="selectVariation">{{produs.quantity}}ml<br>{{produs.price}}Ron</button>
+    </form>
+  </div>
+</div>
+{{#if produs.price2}}
+<div class="variation-container">
+  <div class="variation2">
+    <form action="/home/parfumuri/produs/{{produs._id}}/{{produs.quantity2}}/{{produs.price2}}" method="POST">
+      <input type="hidden" id="quantity2" name="quantity" value="{{produs.quantity2}}">
+      <input type="hidden" id="price2" name="price" value="{{produs.price2}}">
+      <input type="hidden" name="produs" value="{{produs._id}}">
+      <button type="submit" class="selectVariation">{{produs.quantity2}}ml<br>{{produs.price2}}Ron</button>
+    </form>
+  </div>
+</div>
+{{/if}}
+{{#if produs.price3}}
+<div class="variation-container">
+  <div class="variation3">
+    <form action="/home/parfumuri/produs/{{produs._id}}/{{produs.quantity3}}/{{produs.price3}}" method="POST">
+      <input type="hidden" id="quantity3" name="quantity" value="{{produs.quantity3}}">
+      <input type="hidden" id="price3" name="price" value="{{produs.price3}}">
+      <input type="hidden" name="produs" value="{{produs._id}}">
+      <button type="submit" class="selectVariation">{{produs.quantity3}}ml<br>{{produs.price3}}Ron</button>
+    </form>
+  </div>
+</div>
+{{/if}}
+</div>
+<h2 class="mesajul">{{mesaj}}</h2>
+    </div>
+    
+
+
+    <img src="{{produs.picture}}" class="picture" alt="{{this.id}}"   class="produs-image">
+    <div class="buton">
+<form action="/cos" method="POST">
+  <input type="hidden" name="parfum" value="{{produs._id}}">
+  <button type="submit" class="buyBtn" >Adauga in cos</button>
+</form>
+</div>
+        <div id="lineDetails">
+          {{#if produs.description}}
+    <h4  data-target="#description">Descriere</h4>
+    <div id="description" class="hidden">
+        <p style="font-size: larger;" class="detail">{{produs.description}}</p>
+    </div>
+    {{/if}}
+    {{#if produs.composition}}
+    <h4 data-target="#composition">Compozitie</h4>
+    <div id="composition" class="hidden">
+        <p style="font-size: larger;" class="detail">{{produs.composition}}</p>
+    </div>
+    {{/if}}
+    {{#if produs.story}}
+    <h4 data-target="#story">Poveste</h4>
+    <div id="story" class="hidden">
+        <p style="font-size: larger;" class="detail">{{produs.story}}</p>
+    </div>
+    {{/if}}
+</div>
+<span class="linie"></span>
+
+
+{{#if produseBrand}}
+
+<h2 class="interes">Te mai poate interesa</h2>
+<div class="container">
+  
+  
+{{#each produseBrand}}
+<div class="produs-container">
+    <div class="inima"> 
+        <form action="/preferate"  method="post">
+        <input type="hidden" name="adaugaPreferat"  value="{{this._id}}">
+        <button class="buton-adauga" type="submit"><i class="fa-regular fa-heart"  style="color: black;"></i></button>
+        
+        </form>
+        
+    </div>
+    
+    <a class="link-produse" href="/home/parfumuri/produs/{{this._id}}"> 
+    <div class="detalii_produs">
+        <img src="{{this.picture}}" alt="{{this._id}}" class="produs-image">
+        <p>{{this.brand}}</p>
+        <h2 class="title">{{this.title}}</h2>
+        <p>{{this.price}}-RON</p>
+        </div>
+    </a>
+</div>
+{{/each}}
+{{/if}}
+</div>
+
+<div class="produse_vizionate">
+  {{#if produse_vizionate}}
+    <div class="container">
+      {{#each produse_vizionate}}
+
+      {{#if @first}}
+
+      {{else}}
+
+        {{#if (eq @index 1)}}
+          <h2 class="vizionare">Ai vizionat recent</h2>
+        {{/if}}
+        <div class="produs-container">
+          <div class="inima"> 
+            <form action="/preferate" method="post">
+              <input type="hidden" name="adaugaPreferat" value="{{this.produs._id}}">
+              <button class="buton-adauga" type="submit"><i class="fa-regular fa-heart" style="color: black;"></i></button>
+            </form>
+          </div>
+          <a class="link-produse" href="/home/parfumuri/produs/{{this.produs._id}}">
+            <div class="detalii_produs">
+              <img src="{{this.produs.picture}}" alt="{{this.produs._id}}" class="produs-image">
+              <p>{{this.produs.brand}}</p>
+              <h2 class="title">{{this.produs.title}}</h2>
+              <p>{{this.produs.price}}-RON</p>
+            </div>
+          </a>
+        </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="pareri" id="review">
+    <p>Rating {{produs.brand}} {{produs.title}}</p>
+    <form action="/home/parfumuri/produs/{{produs._id}}" method="post">
+    <div class="field">
+    <textarea name="review" id="parere" cols="30" rows="10"></textarea>
+    <button value="{{produs._id}}" class="butonProdus" name="produs" type="submit">Trimite evaluarea</button>
+      </form>
+    </div>
+    <p style="color: red;">{{mesajReview}} {{nuCumparator}}</p>
+    
+    <div class="parerile">
+      {{#each parere}}
+      <div class="distanta">
+      <p class="opinii">{{this.review}}</p>
+      <div class="persoana">
+      <p>{{this.nume}} </p>
+      <p>{{this.data}}</p>
+<form action="/home/review-util" method="post"> 
+  <button value="{{this._id}}" name="da">Da {{this.da}}</button>
+  <button value="{{this._id}}" name="nu">Nu {{this.nu}}</button>
+</form>
+   
+      </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  
+
+<script>
+  $('#lineDetails h4').click(function() {
+  var target = $(this).data('target');
+  var $targetPara = $(target);
+
+  // Check if target paragraph is already visible
+  if ($targetPara.hasClass('hidden')) {
+    // Hide all other visible paragraphs within lineDetails
+    $('#lineDetails .detail:not(' + target + ')').addClass('hidden');
+
+    // Show target paragraph
+    $targetPara.removeClass('hidden');
+  } else {
+    // Target paragraph is already visible, so hide it
+    $targetPara.addClass('hidden');
+  }
+});
+</script>
+
+
+
+
+<footer>
+  <div class="elemente">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Despre noi</h3>
+        <p>Detinem un magazin de parfumuri de inalta calitate si originale pentru femei si barbati</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Contacteaza-ne</h3>
+        <p>Telefon: 0729336593</p>
+        <p>Email: scentsheaven9@gmail.com </p>
+        <p>Adresa: Strada Cismelei 15</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

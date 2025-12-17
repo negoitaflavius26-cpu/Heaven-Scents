@@ -1,0 +1,331 @@
+
+/* pentru nav-bar*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+
+
+h1{
+    color: goldenrod;
+    padding: 2.6rem;
+}
+.link-el{
+    text-decoration: underline;
+    font-size: 1rem;
+    display: flex;
+    padding: 5px 10px;
+    
+    top: 55px;
+    right: 61.3rem;
+}
+
+.link-el a:not(:last-child){
+    margin-right: 20px;
+}
+.link-el a{
+    color: white;
+}
+
+.nume{
+    color: red;
+}
+
+.iconite {
+    display: flex;
+    position: absolute;
+    margin-left: 1400px;
+  }
+
+.iconite p{
+    top: 13px;
+    font-size: larger;
+}
+  .iconite a {
+    margin: 0 40px;
+    top: 10px; /* Adjust the margin as per your desired spacing */
+  }
+
+.iconite p:not(:last-child){
+    padding-right: 10px;
+}
+  
+  /* Additional styling for the icon elements if needed */
+  .iconite i {
+    font-size: 30px; /* Adjust the font size as per your requirement */
+  }
+
+i{
+    color: green;
+}
+
+
+
+a:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.nav-bar{
+    height: 160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    position: relative;
+}
+
+.cauta{
+    right: 110px;
+    width: 900px;
+    height: 40px;
+    border: none;
+    top: 10px;
+    border-radius: 2px;
+    
+    
+}
+/* pentru nav-bar*/
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    cursor: pointer ;
+}
+
+.product-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.product-container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: black;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.container img{
+    max-width: 100%;
+    max-height: 100%;
+}
+p {
+    margin: 5px 0;
+}
+
+#user{
+    color: red;
+    font-size: larger;
+    position: absolute;
+    margin-left: 1250px;
+    cursor: pointer;
+}
+
+#user:hover{
+    text-decoration: underline;
+}
+
+#email{
+    color: red;
+    font-size: larger;
+    position: absolute;
+    margin-left: 1250px;
+    cursor: pointer;
+}
+
+.inima{
+    position: absolute;
+    top: 0;
+    padding-left: 15rem;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.buton-adauga{
+    border: none;
+    background-color: white;
+    font-size: 20px;
+}
+
+
+
+.container-brand{
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    cursor: pointer ;
+}
+.detalii{
+    color: black;
+}
+
+.titlu {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+margin-left: 45vw;
+padding-top: 24px;
+text-decoration: underline;
+}
+
+.mesaj-succes{
+    color: black;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.text{
+    padding-top: 200px;
+}
+
+.uitare{
+    padding-top: 100px;
+}
+
+.input{
+    margin-right: 830px;
+}
+
+.uitareParola{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.mesajEroare{
+    color: red;
+    margin-left: 800px;
+    padding-top: 30px;
+}
+
+.butonLogare{
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.butonLogare:hover{
+    background-color: grey;
+}
+
+.elemente{
+    background-color: black;
+    padding-bottom: 30px;
+  }
+    footer {
+      position: absolute;
+      padding-top: 30vh;
+      margin-bottom: 0;
+      width: 100%; 
+      color: white;
+      text-align: center;
+    }
+    footer h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding-top: 30px;
+    }
+    footer p {
+      font-size: 16px;
+    }
+  
+    .uitare{
+        text-align: center;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 17px;
+        padding: 18px 20px;
+    }
+
+
+
+    .grupa{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        align-items: center;
+    }
+    .emailul{
+        margin-right: 277px;
+    }
+    .mesajul{
+        text-align: center;
+        margin-top: 30px;
+        width: 440px;
+    }
+
+    .inputEmail{
+        width: 300px;
+        margin-left: 800px;
+        height: 45px;
+    }
+
+.reset{
+    font-size: 35px;
+}
+
+    .butonUitare{
+        width: 300px;
+        text-align: center;
+        margin-left: 800px;
+        height: 40px;
+        margin-top: 30px;
+
+    }
+
+    .text{
+        text-align: center;
+    }
+
+    .uitare i{
+        color: green;
+        font-size: 50px;
+    }
+
+    .mesaj-uitare{
+        width: 300px;
+    }

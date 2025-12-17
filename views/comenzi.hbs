@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/comenzi.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <ul class="navbar-nav">
+           
+                 <a href="/admin/dashboard" class="nav-link">
+                    <i class="fa fa-house" style="color: #000000;"></i>
+                    <span class="link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/produse" class="nav-link">
+                    <i class="fa-solid fa-spray-can-sparkles" style="color: #000000;"></i>
+                    <span class="link-text">Produse</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/comenzi" class="nav-link">
+                    <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                    <span class="link-text">Comenzi & Livrare</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/dashboard/statistici" class="nav-link">
+                    <i class="fa-solid fa-arrow-trend-up" style="color: #000000;"></i>
+                    <span class="link-text">Statistici</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+        <main >
+<h1>Comenzi Noi</h1>
+  <form action="/admin/idComanda">
+  <input type="text" class="cauta-comanda" name="cautaComanda" placeholder="Cauta o comanda">
+  </form>
+<div class="sectiuni">
+
+  <a href="/admin/dashboard/comenzi"><h2 class="sectie">Comenzi Noi</h2></a>
+  <a href="/admin/dashboard/comenzi/completate"><h2 class="sectie">Comenzi Completate</h2></a>
+</div>
+<span class="linie"></span>
+{{#each comenzi}}
+  <div class="comanda-container">
+    <p style="font-size: larger;" class="id"> ID Comanda: {{this.idComanda}}</p>
+    <p class="data"> Data: {{this.data}}- Ora: {{this.ora}}</p>
+    <div class="sectiune">
+      <p class="nume">{{this.nume}}</p>
+      <p class="prenume">{{this.prenume}}</p>
+    </div>
+    <ul>
+      {{#each this.produse}}
+        <div class="variatii">
+          <p class="pret">{{this.quantity}}ml-{{this.price}}Ron</p>
+        </div>
+        <div class="produse">
+          <li class="titlu">{{this.produse.title}}</li>
+          <img src="{{this.produse.picture}}" class="imagine" alt="">
+        </div>
+      {{/each}}
+    </ul>
+    
+    <div class="detalii">
+      
+      <form action="/admin/utilizator/{{this.email}}" method="post">
+        <input type="hidden" value="{{this.email}}" name="cautaClient">
+        <button type="submit" class="email">Email:{{this.email}}</button>
+      </form>
+      <p class="transport">Transport: {{this.transport}}</p>
+      
+      <p class="plata">Plata: {{this.plata}}</p>
+      <div class="informatii">
+        <button class="informatiiButon">Livrare la<i class="fas fa-angle-down"></i></button>
+        <div class="informatiiComanda ascuns">
+          <p class="judete">Judet: {{this.judete}}</p>
+          <p class="localitate">Localitatea: {{this.localitate}}</p>
+          <p class="codPostal">Cod Postal: {{this.codPostal}}</p>
+          <p class="adresa">Adresa: {{this.adresa}}</p>
+        </div>
+      </div>
+      <h4>Total: {{this.totalPret}} RON</h4>
+    </div>
+    <form action="/admin/dashboard/comenzi/sterge" method="post">
+      <input type="hidden" name="butonStergere" value="{{this._id}}">
+      <button class="butonSterge" type="submit">Sterge Comnanda</button>
+    </form>
+  </div>
+{{/each}}
+
+<script>
+const buttons = document.querySelectorAll('.informatiiButon');
+const deliveryInfos = document.querySelectorAll('.informatiiComanda');
+
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    deliveryInfos[index].classList.toggle('ascuns');
+  });
+});
+</script>
+</body>
+</html>

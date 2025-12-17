@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/contact.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="nav-bar">
+        <h1>Heaven Scents</h1>
+        <div class="search">
+        <form action="/home/cauta" method="get">
+            <input type="text"  class="cautare" name="cautare" placeholder="Cauta un produs" >
+            
+        </form>
+        
+        </div>
+<div class="link-el">
+    {{#each variante}}
+        <a class="link" href="/home/categorie/{{this}}">{{this}}</a>
+    {{/each}}
+    <a class="link" href="/home/parfumuri">Parfumuri</a>
+    <a class="link" href="/home/branduri">Branduri</a>
+</div>
+        <div class="iconite ">
+            <p class="nume">{{nume}}</p>
+            <a href="/utilizator"><i class="fa-regular fa-user" style="color: #fafafa;"></i></a>
+            <a href="/preferate"><i class="fa-regular fa-heart" style="color: #ffffff;"></i></a>
+            <a href="/cos"><i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i></a>
+          </div>
+    </div> 
+<div class="detalii-utilizator">
+<h3 class="nume">{{nume}}</h3>
+<p class="email">{{email}}</p>
+</div>
+<form action="/utilizator/deconectare" method="post">
+            <input type="hidden" name="deconecatre" value="{{nume}}">
+            <button type="submit" class="deconectareUtilizator">Deconectare</button>
+</form>
+
+
+
+
+<div class="sectiuni">
+  <a href="/utilizator"><h2 class="sectie">Istoric Comenzi</h2></a>
+  <a href="/utilizator/contact"><h2 class="sectie">Date Contact</h2></a>
+</div>
+<span class="linie"></span>
+<form action="/utilizator/contact/update" method="post">
+<div class="contact-container">
+    <div class="autentificare">
+        <h2>Date de autentificare</h2>
+        <br>
+        <br>
+        <h3>Email:</h3>
+        <br>
+        
+        <input class="input" type="text" name="email" value="{{contact.email}}">
+    </div>
+    <div class="informatii">
+        <br>
+        <h2>Mobil/telefon</h2>
+        <br>
+        <input class="input" type="text" name="telefon" value="{{contact.telefon}}">
+    </div>
+        <div class="adresa-facturare2">
+            <br>
+        <h3>Nume</h3>
+        <input class="input" type="text" name="nume"  value="{{contact.nume}}">
+        <br>
+        <br>
+        <h3>Oras sau localitate</h3>
+        <input class="input" type="text" name="localitate" value="{{contact.localitate}}">
+        <br>
+        <br>
+        <h3>Cod postal</h3>
+        <input class="input" type="text" name="codPostal" value="{{contact.codPostal}}">
+    </div>
+    <div class="adresa-facturare">
+        <br>
+        <h2>Adresa de facturare</h2>
+        <br>
+        <h3>Prenume</h3>
+        <input  class="input" type="text" name="prenume"  value="{{contact.prenume}}">
+        <br>
+        <br>
+        <h3>Adresa</h3>
+        <input class="input" type="text" name="adresa" value="{{contact.adresa}}">
+        <br>
+        <br>
+        <h3>Judet</h3>
+        <input class="input" type="select" name="judet" value="{{contact.judete}}">
+    </div>
+    <div class="buton">
+        <input type="hidden" name="updateContact" value="{{contact.email}}">
+        <button type="submit" class="butonUpdate">Salveaza Modificarile</button>
+    
+    </form>
+    <form action="/utilizator/contact/sterge" method="post">
+    <div class="sterge">
+    <input type="hidden" name="stergeContact" value="{{persoana._id}}">
+    <button type="submit" class="butonSterge">Sterge Contul</button>
+    </form>
+    </div>
+    </div>
+</div>
+<footer>
+  <div class="elemente">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Despre noi</h3>
+        <p>Detinem un magazin de parfumuri de inalta calitate si originale pentru femei si barbati</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Contacteaza-ne</h3>
+        <p>Telefon: 0729336593</p>
+        <p>Email: scentsheaven9@gmail.com </p>
+        <p>Adresa: Strada Cismelei 15</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

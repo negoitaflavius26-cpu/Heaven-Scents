@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stripe Payment Form</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <h1>Payment Form</h1>
+  <form id="payment-form">
+    <div>
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="Card Number" required>
+    </div>
+    <div>
+      <label for="card-expiry">Card Expiry</label>
+      <input type="text" id="card-expiry" placeholder="MM/YY" required>
+    </div>
+    <div>
+      <label for="card-cvc">CVC</label>
+      <input type="text" id="card-cvc" placeholder="CVC" required>
+    </div>
+    <div>
+      <label for="card-name">Cardholder Name</label>
+      <input type="text" id="card-name" placeholder="Cardholder Name" required>
+    </div>
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <script>
+    // Stripe initialization
+    var stripe = Stripe('pk_test_51NNdDbC3DF58BP8kiSKQTeeXEoHBlllVCYBTCWjtWBKxK1Ae8EWLaMF9TUFt7NF8KC5MFsDkdMKlMZPT31VMAm5100fxEWtayA');
+    var elements = stripe.elements();
+    
+    // Create a card Element
+    var card = elements.create('card');
+    card.mount('#card-number');
+
+    // Handle form submission
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      stripe.createPaymentMethod({
+        type: 'card',
+        card: card,
+        billing_details: {
+          name: document.getElementById('card-name').value
+        }
+      }).then(function(result) {
+        if (result.error) {
+          console.log(result.error.message);
+        } else {
+          // Send the payment method ID to your server for further processing
+          var paymentMethodId = result.paymentMethod.id;
+          // You can send the paymentMethodId to your server via AJAX or another method
+          // for further processing (e.g., creating a charge)
+          console.log(paymentMethodId);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
