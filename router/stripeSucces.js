@@ -62,7 +62,7 @@ router.get('/cos/detalii/stripe-success', express.raw({type: 'application/json'}
         const year = estimareData.getFullYear();
         
         const estimareLivrare = `${day}/${month}/${year}`;
-        const paginaHtml = html({ product: products, detalii ,estimareLivrare}, { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true });
+        const paginaHtml = html({ produs: products, detalii ,estimareLivrare}, { allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true });
         
         const transportator = nodemailer.createTransport({
           host: 'smtp.gmail.com',
