@@ -8,7 +8,7 @@ It provides a clean interface that serves both **admin** and **user** roles, off
 ### Additional Screens
 | Signup Page | Stripe Card Payment | Order Confirmation Email |
 |--------------|--------------------|---------------------------|
-| ![Signup Page](./screenshots/sign_up.png) | ![Stripe Payment](./screenshots/stripe_card.png) | ![Order Email](./screenshots/email_order.png) |
+| ![Signup Page](./screenshots/sign_up.PNG) | ![Stripe Payment](./screenshots/stripe_card.png) | ![Order Email](./screenshots/email_order.png) |
 
 | Admin Dashboard | Orders Management |
 |-----------------|-------------------|
