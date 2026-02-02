@@ -86,7 +86,7 @@ app.use((err, req, res, next) => {
 
 const start=async()=>{
   try {
-    await connectareBD()
+    await connectareBD.connect()
     app.listen(3000,console.log('Serverul asculta la portul 3000'))
   } catch (error) {
     console.log(error)
