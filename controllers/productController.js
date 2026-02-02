@@ -25,6 +25,24 @@ next(error)
 };
 
 
+const filtruProduse= async(req,res)=>{
+  try{
+   const produs= await  modelProdus.aggregate([
+    {$project:{
+        _id:1,tile:1,price:1,picture:1,brand:1
+    }},
+    {$sort:{
+        price:-1
+    }}
+])
+console.log('asta e produsule',produs);
+const variante=await modelProdus.find().distinct('categorie').sort()
+return res.render("parfumuri", { produs,variante });
+  }catch{
+    console.log('nu a mers')
+  }
+}
+
 
 const readprodus = async (req, res) => {
     const { _id } = req.params;
@@ -141,4 +159,4 @@ const trimteReview= async(req,res)=>{
 
 
 
-module.exports = { showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil};
+module.exports = { showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil,filtruProduse};

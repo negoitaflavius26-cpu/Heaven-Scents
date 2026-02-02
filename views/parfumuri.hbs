@@ -34,7 +34,12 @@
           </div>
     </div> 
 
-
+<select onchange="location = this.value;">
+  <option value="" hidden selected>Filtreaza Produsele</option> 
+  <option  value="/home/parfumuri/produse-scumpe">Cele mai scumpe</option>
+  <option  value="/home/parfumuri/produse-ieftine">Cele mai ieftine</option>
+  <option  value="/home/parfumuri/cele-mai-vandute">Cele mai vandute</option>
+</select>
 
 <div class="container">
 {{#each produs}}

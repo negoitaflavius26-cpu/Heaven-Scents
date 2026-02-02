@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const {showprodus,readprodus,cautareProdus,trimteReview,reviewUtil}=require('../controllers/productController')
+const {showprodus,readprodus,cautareProdus,trimteReview,reviewUtil,filtruProduse}=require('../controllers/productController')
+
+router.get('/home/parfumuri/produse-scumpe',filtruProduse)
 
 router.get('/home/parfumuri', showprodus)
 
