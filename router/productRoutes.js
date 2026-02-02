@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {showprodus,readprodus,cautareProdus,trimteReview,reviewUtil,filtruProduse}=require('../controllers/productController')
+const {showprodus,readprodus,cautareProdus,trimteReview,reviewUtil,filtruProduseScumpe,filtruproduseIeftine,filtruProduseVandute}=require('../controllers/productController')
 
-router.get('/home/parfumuri/produse-scumpe',filtruProduse)
+router.get("/home/parfumuri/cele-mai-vandute",filtruProduseVandute)
+
+router.get('/home/parfumuri/produse-ieftine',filtruproduseIeftine)
+
+router.get('/home/parfumuri/produse-scumpe',filtruProduseScumpe)
 
 router.get('/home/parfumuri', showprodus)
 

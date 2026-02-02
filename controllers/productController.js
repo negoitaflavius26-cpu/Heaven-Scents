@@ -25,7 +25,57 @@ next(error)
 };
 
 
-const filtruProduse= async(req,res)=>{
+
+const filtruProduseVandute=async(req,res)=>{
+  try{
+    const produs= await modelComanda.aggregate([
+    {$lookup:{
+        from:'modelproducts',
+        localField:'produse.produse',
+        foreignField:'_id',
+        as:'produsComandat'
+    }},
+    {$unwind:'$produsComandat'},
+    {$group:{
+        _id:'$produsComandat._id', title:{$first:'$produsComandat.title'}, cumparat:{$sum:1},
+        price:{$first:'$produsComandat.price'},brand:{$first:'$produsComandat.brand'},
+        picture:{$first:'$produsComandat.picture'}
+    }},
+    {$sort:{
+        cumparat:-1
+    }}
+])
+console.log('astea sunt produsele',produs);
+const variante=await modelProdus.find().distinct('categorie').sort()
+return res.render("parfumuri", { produs,variante });
+  }
+  catch{
+ next(error)
+  }
+}
+
+
+
+const filtruproduseIeftine=async(req,res)=>{
+  try{
+    const produs= await modelProdus.aggregate([
+    {$project:{
+        _id:1,tile:1,price:1,picture:1,brand:1
+    }},
+    {$sort:{
+        price:1
+    }}
+])
+console.log('astea sunt produsele',produs);
+const variante=await modelProdus.find().distinct('categorie').sort()
+return res.render("parfumuri", { produs,variante });
+  }
+  catch{
+ next(error)
+  }
+}
+
+const filtruProduseScumpe= async(req,res)=>{
   try{
    const produs= await  modelProdus.aggregate([
     {$project:{
@@ -35,11 +85,11 @@ const filtruProduse= async(req,res)=>{
         price:-1
     }}
 ])
-console.log('asta e produsule',produs);
+console.log('astea sunt produsele',produs);
 const variante=await modelProdus.find().distinct('categorie').sort()
 return res.render("parfumuri", { produs,variante });
   }catch{
-    console.log('nu a mers')
+    next(error)
   }
 }
 
@@ -159,4 +209,4 @@ const trimteReview= async(req,res)=>{
 
 
 
-module.exports = { showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil,filtruProduse};
+module.exports = { showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil,filtruProduseScumpe,filtruproduseIeftine,filtruProduseVandute};
