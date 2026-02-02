@@ -1,6 +1,6 @@
 const modelComanda=require('../modele/modelComanda')
 
-const afiseazaComenzi = async (req, res) => {
+const afiseazaComenzi = async (req, res,next) => {
   try {
     const comenzi = await modelComanda
       .find({}, { idComanda:1, nume: 1, prenume: 1, email: 1, transport: 1, judete: 1, plata: 1, codPostal: 1, adresa: 1, produse: 1, data: 1, ora: 1,total:1 })
@@ -35,7 +35,7 @@ next(error)
   }
 };
 
-const afiseazaComenziCompletate = async (req, res) => {
+const afiseazaComenziCompletate = async (req, res,next) => {
   try {
     const comenzi = await modelComanda
       .find({}, { idComanda:1, nume: 1, prenume: 1, email: 1, transport: 1, localitate:1, judete: 1, plata: 1, codPostal: 1, adresa: 1, produse: 1, data: 1, ora: 1,total:1 })
@@ -71,7 +71,7 @@ const afiseazaComenziCompletate = async (req, res) => {
 };
 
 
-const stergeComanda= async(req,res)=>{
+const stergeComanda= async(req,res,next)=>{
     const {butonStergere}=req.body
     try {
         await modelComanda.findByIdAndDelete(butonStergere)

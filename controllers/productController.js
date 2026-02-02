@@ -14,11 +14,23 @@ const dataFormatata=dataActuala.toLocaleDateString('en-GB', {
   year: 'numeric',
 });
 
-const showprodus = async (req, res) => {
+
+const varianteProduse=async(req,res,next)=>{
+  try{
+    const variante=await modelProdus.find().distinct('categorie').sort()
+    res.locals.variante=variante
+    next()
+  }catch(error){
+    next(error)
+  }
+}
+
+
+const showprodus = async (req, res,next) => {
     try {
     const produs = await modelProdus.find({}, { picture: 1, title: 1, price: 1, _id: 1,brand:1 });
-    const variante=await modelProdus.find().distinct('categorie').sort()
-    return res.render("parfumuri", { produs,variante });
+    
+    return res.render("parfumuri", { produs });
     } catch (error) {
 next(error)
     }
@@ -26,7 +38,7 @@ next(error)
 
 
 
-const filtruProduseVandute=async(req,res)=>{
+const filtruProduseVandute=async(req,res,next)=>{
   try{
     const produs= await modelComanda.aggregate([
     {$lookup:{
@@ -46,8 +58,8 @@ const filtruProduseVandute=async(req,res)=>{
     }}
 ])
 console.log('astea sunt produsele',produs);
-const variante=await modelProdus.find().distinct('categorie').sort()
-return res.render("parfumuri", { produs,variante });
+
+return res.render("parfumuri", { produs });
   }
   catch{
  next(error)
@@ -56,7 +68,7 @@ return res.render("parfumuri", { produs,variante });
 
 
 
-const filtruproduseIeftine=async(req,res)=>{
+const filtruproduseIeftine=async(req,res,next)=>{
   try{
     const produs= await modelProdus.aggregate([
     {$project:{
@@ -67,15 +79,15 @@ const filtruproduseIeftine=async(req,res)=>{
     }}
 ])
 console.log('astea sunt produsele',produs);
-const variante=await modelProdus.find().distinct('categorie').sort()
-return res.render("parfumuri", { produs,variante });
+
+return res.render("parfumuri", { produs});
   }
   catch{
  next(error)
   }
 }
 
-const filtruProduseScumpe= async(req,res)=>{
+const filtruProduseScumpe= async(req,res,next)=>{
   try{
    const produs= await  modelProdus.aggregate([
     {$project:{
@@ -86,15 +98,15 @@ const filtruProduseScumpe= async(req,res)=>{
     }}
 ])
 console.log('astea sunt produsele',produs);
-const variante=await modelProdus.find().distinct('categorie').sort()
-return res.render("parfumuri", { produs,variante });
+
+return res.render("parfumuri", { produs });
   }catch{
     next(error)
   }
 }
 
 
-const readprodus = async (req, res) => {
+const readprodus = async (req, res,next) => {
     const { _id } = req.params;
     const parere= await modelReview.find({produs:_id},{nume:1,review:1,produs:1,data:1,da:1,nu:1}).sort({ _id: -1 })
     req.session.produse_vizionate=req.session.produse_vizionate || [];
@@ -102,7 +114,7 @@ const readprodus = async (req, res) => {
     try {
       const produs = await modelProdus.findById(_id);
       const produseBrand = await modelProdus.find({ brand: produs.brand, _id: { $ne: produs._id } });
-      const variante=await modelProdus.find().distinct('categorie').sort();
+      
       const alreadyViewed = req.session.produse_vizionate.some(
         (item) => item.produs._id === _id
       );
@@ -113,13 +125,13 @@ const readprodus = async (req, res) => {
       }
       console.log('Produsele vizionate', req.session.produse_vizionate);
       const produse_vizionate=req.session.produse_vizionate;
-      return res.render('produs', { produs: produs, produseBrand: produseBrand,variante,parere, produse_vizionate: produse_vizionate });
+      return res.render('produs', { produs: produs, produseBrand: produseBrand,parere, produse_vizionate: produse_vizionate });
     } catch (err) {
     next(error)
     }
   };
 
-const cautareProdus = async (req, res) => {
+const cautareProdus = async (req, res,next) => {
     try {
     const cautaProdus = req.query.cautaProdus;
     const produs = await modelProdus.find({
@@ -129,15 +141,15 @@ const cautareProdus = async (req, res) => {
         { brand: { $regex: cautaProdus, $options: 'i' } }
         ]
     });
-    const variante=await modelProdus.find().distinct('categorie').sort()
+  
     let message = `Rezultatele cautarii pentru  "${cautaProdus}"`;
     const numarProduse=`Numar de produse: ${produs.length}`
     if(!cautaProdus || produs.length===0){
         const  message= `Nu exista rezultate pentru  "${cautaProdus}"`;
         const mesajCautare= `Nu avem nici-un produs care sa corespunda cautarii"${cautaProdus}".Va rugam sa incercati din nou `
-        return res.render('produse-cautate', { produs,  message, mesajCautare,variante });
+        return res.render('produse-cautate', { produs,  message, mesajCautare });
     }else{
-        return res.render('produse-cautate', { produs, message,numarProduse,variante });
+        return res.render('produse-cautate', { produs, message,numarProduse });
     }
     } catch (error) {
   next(error)
@@ -189,7 +201,7 @@ const trimteReview= async(req,res)=>{
   const produs = await modelProdus.findById(review.produs);
   console.log('asta e produs',produs)
     const produseBrand = await modelProdus.find({ brand: produs.brand, _id: { $ne: produs._id } })
-    const variante=await modelProdus.find().distinct('categorie').sort()
+   
     const ObjectId = require('mongoose').Types.ObjectId;
     const verifica = await modelComanda.find({
       nume: utilizator,
@@ -209,4 +221,4 @@ const trimteReview= async(req,res)=>{
 
 
 
-module.exports = { showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil,filtruProduseScumpe,filtruproduseIeftine,filtruProduseVandute};
+module.exports = {varianteProduse, showprodus, readprodus,cautareProdus,trimteReview,trimteReview,reviewUtil,filtruProduseScumpe,filtruproduseIeftine,filtruProduseVandute};

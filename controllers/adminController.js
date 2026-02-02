@@ -78,7 +78,7 @@ const schema=Joi.object({
 
 
 // Inregistrare Produs In Baza De Date
-const adaugaprodus = async (req, res) => {
+const adaugaprodus = async (req, res,next) => {
   const {error}= await schema.validate(req.body)
   if(error){ 
       const mesajPersoana=error.details[0].message
@@ -123,7 +123,7 @@ const adaugaprodus = async (req, res) => {
     }
   };
 
-  const afiseazaProduseAdmin= async (req,res)=>{
+  const afiseazaProduseAdmin= async (req,res,next)=>{
     try {
         const produse= await modelProduct.find({},{ picture: 1, title: 1, price: 1, _id: 1,brand:1 })
         return res.status(200).render('produse',{produse})
@@ -133,7 +133,7 @@ const adaugaprodus = async (req, res) => {
 }
 
 
-const afiseazaActivitate = async (req, res) => {
+const afiseazaActivitate = async (req, res,next) => {
   try {
     const preferate = await modelPreferate
       .find({}, { email: 1, produse: 1 }).populate('produse')
@@ -148,7 +148,7 @@ const afiseazaActivitate = async (req, res) => {
   }
 };
 
-const detaliiProdusAdmin= async(req,res)=>{
+const detaliiProdusAdmin= async(req,res,next)=>{
   const {_id}=req.params
   try {
     const detalii= await modelProduct.findById(_id)
@@ -158,7 +158,7 @@ const detaliiProdusAdmin= async(req,res)=>{
   }
 }
 
-const updateProdus = async (req, res) => {
+const updateProdus = async (req, res,next) => {
   const { updateID } = req.body;
 
 
@@ -201,7 +201,7 @@ const updateProdus = async (req, res) => {
   }
 };
 
-const stergeProdus= async(req,res)=>{
+const stergeProdus= async(req,res,next)=>{
    const {stergeID}=req.body
    try {
     await modelProduct.findByIdAndDelete(stergeID)
@@ -211,7 +211,7 @@ const stergeProdus= async(req,res)=>{
    }
 }
 
-const arataUtilizator= async(req,res)=>{
+const arataUtilizator= async(req,res,next)=>{
   const {cautaClient}=req.body
   try {
   const utilizator=  await modelComanda.findOne({email:cautaClient})
@@ -238,7 +238,7 @@ const arataUtilizator= async(req,res)=>{
   }
 }
 
-const arataContact= async(req,res)=>{
+const arataContact= async(req,res,next)=>{
   const {cautaClient}=req.body
   try {
     const utilizator=  await modelComanda.findOne({email:cautaClient})
@@ -252,7 +252,7 @@ const arataContact= async(req,res)=>{
 }
 
 
-const updateContactAdmin= async(req,res)=>{
+const updateContactAdmin= async(req,res,next)=>{
   const {updateContact}=req.body
   
   try {
@@ -285,7 +285,7 @@ const isAdmin=(req,res,next)=>{
   }
 }
 
-const cautareProdus = async (req, res) => {
+const cautareProdus = async (req, res,next) => {
   try {
     const cautaProdus = req.query.cautaProdus;
     const cautaProdusNormalizat = diacritics.remove(cautaProdus).toLowerCase(); // Normalizare fără diacritice
@@ -314,7 +314,7 @@ const cautareProdus = async (req, res) => {
 };
 
 
-const cautareComanda = async (req, res) => {
+const cautareComanda = async (req, res,next) => {
   try {
   const {cautaComanda}=req.query
   console.log(cautaComanda)

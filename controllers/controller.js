@@ -16,7 +16,7 @@ require("dotenv").config()
 
 
 
-const paginaAcasa= async (req,res)=>{
+const paginaAcasa= async (req,res,next)=>{
     try {
         const variante=await modelProduse.find().distinct('categorie').sort()
         console.log(variante)
@@ -29,7 +29,7 @@ const paginaAcasa= async (req,res)=>{
 
 
 
-const paginaLogare= async(req,res)=>{
+const paginaLogare= async(req,res,next)=>{
     try {
         const variante=await modelProduse.find().distinct('categorie').sort()
         console.log(variante)
@@ -39,7 +39,7 @@ const paginaLogare= async(req,res)=>{
     }
 }
 
-const paginaInregistrare= async(req,res)=>{
+const paginaInregistrare= async(req,res,next)=>{
     try {
         const variante=await modelProduse.find().distinct('categorie').sort()
         console.log(variante)
@@ -94,7 +94,7 @@ const schema= Joi.object({
 
 // Inregistare persoane
 
-const inregistrarePersoana= async(req,res)=>{
+const inregistrarePersoana= async(req,res,next)=>{
     const {error}= await schema.validate(req.body)
     const variante=await modelProduse.find().distinct('categorie').sort()
     if(error){ 
@@ -141,7 +141,7 @@ const inregistrarePersoana= async(req,res)=>{
 }
 
  // Logare Persoane
-const logarePersoana= async (req,res)=>{
+const logarePersoana= async (req,res,next)=>{
     try {
         const verifica=await modelInregistrare.findOne({email:req.body.email})
         const variante=await modelProduse.find().distinct('categorie').sort()
@@ -186,7 +186,7 @@ const logarePersoana= async (req,res)=>{
 }
 }
 
-const uitareParola=async(req,res)=>{
+const uitareParola=async(req,res,next)=>{
     const variante=await modelProduse.find().distinct('categorie').sort()
     return res.render('pagina-uitare',{variante})
 }
@@ -281,7 +281,7 @@ else{
 
 
 
-const resetareParola= async(req,res)=>{
+const resetareParola= async(req,res,next)=>{
     const token=req.query.token
     if(!token){
         return res.status(400).send('Token is required');
@@ -311,7 +311,7 @@ const resetareParola= async(req,res)=>{
 
 
 
-const paginaBranduri = async (req, res) => {
+const paginaBranduri = async (req, res,next) => {
     try {
       const branduri = await modelProduse.find().distinct('brand').sort();
       const variante=await modelProduse.find().distinct('categorie').sort()
@@ -337,7 +337,7 @@ const paginaBranduri = async (req, res) => {
     }
   };
 
-const citesteBrand=async(req,res)=>{
+const citesteBrand=async(req,res,next)=>{
     const {brand}=req.params
     try {
         const brandul= await modelProduse.find({brand})
@@ -350,7 +350,7 @@ const citesteBrand=async(req,res)=>{
 
 }
 
-const citesteCategoria= async (req,res)=>{
+const citesteCategoria= async (req,res,next)=>{
     const {categorie}=req.params
     try {
         const products= await modelProduse.find({categorie})

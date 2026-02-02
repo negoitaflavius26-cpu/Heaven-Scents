@@ -5,7 +5,7 @@ const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const modelLogare = require('../modele/modelLogare')
 
-const paginaUtilizator= async (req,res)=>{
+const paginaUtilizator= async (req,res,next)=>{
 
     const utilizator=req.session.email
     const variante=await modelProdus.find().distinct('categorie').sort()
@@ -23,7 +23,7 @@ const variante=await modelProdus.find().distinct('categorie').sort()
 }    
 }
 
-const cumparaDinNou= async(req,res)=>{
+const cumparaDinNou= async(req,res,next)=>{
     req.session.cos=req.session.cos||[]
     const{quantity,price,parfum}=req.body
     const ObjectId = require('mongoose').Types.ObjectId;
@@ -40,7 +40,7 @@ const cumparaDinNou= async(req,res)=>{
 }
 
 
-const paginaContact= async(req,res)=>{
+const paginaContact= async(req,res,next)=>{
     const utilizator=req.session.email
     if(!utilizator){
         return res.render('signup')
@@ -58,7 +58,7 @@ next(error)
 
 
 
-const deconectareUtilizator= async(req,res)=>{
+const deconectareUtilizator= async(req,res,next)=>{
     req.session.destroy((err)=>{
         if(err){
             res.send('Sesiunea nu a putut fi stearsa')
@@ -68,7 +68,7 @@ const deconectareUtilizator= async(req,res)=>{
 }
 
 
-const schimbaParola= async(req,res)=>{
+const schimbaParola= async(req,res,next)=>{
     const clientId=req.body.clientId
     const salt = await bcrypt.genSalt(10); 
     const hashPassword = await bcrypt.hash(req.body.parola, salt);
@@ -86,7 +86,7 @@ const schimbaParola= async(req,res)=>{
 
 
 
-const updateContact= async(req,res)=>{
+const updateContact= async(req,res,next)=>{
     const {updateContact}=req.body
     try {
         const updateDetalii={
@@ -111,7 +111,7 @@ const updateContact= async(req,res)=>{
     }
 }
 
-const stergeContact = async (req, res) => {
+const stergeContact = async (req, res,next) => {
     const { stergeContact } = req.body;
     console.log('stergeContact:', stergeContact); 
     try {

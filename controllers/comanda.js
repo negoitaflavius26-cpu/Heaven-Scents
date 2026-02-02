@@ -110,7 +110,7 @@ function idComanda() {
 
 
 
-const detaliiComanda = async (req, res) => {
+const detaliiComanda = async (req, res,next) => {
   const produs = req.session.cos || [];
   console.log(`Sesiunea cos, are id-ul?:`,produs)
 

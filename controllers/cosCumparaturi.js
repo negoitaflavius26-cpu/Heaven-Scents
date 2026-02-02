@@ -1,14 +1,14 @@
 const modelComanda = require('../modele/modelComanda');
 const modelProdus=require('../modele/modelProdus')
 
-const paginaCos = async (req, res) => {
+const paginaCos = async (req, res,next) => {
   const cos = req.session.cos || [];
   const variante=await modelProdus.find().distinct('categorie').sort()
   console.log("Asta e cos",cos)
   return res.render("cos", { cos ,variante});
 };
 
-const adaugaInCos = async (req, res) => {
+const adaugaInCos = async (req, res,next) => {
   req.session.produs = req.session.produs || [];
   req.session.cos = req.session.cos || [];
   const parfumId = req.body.parfum; // Get the value of the "parfum" field from the form submission
@@ -33,7 +33,7 @@ const adaugaInCos = async (req, res) => {
   console.log('Asta e seiunea cos',req.session.cos);
   return res.redirect('/cos');
 };
-const variatieProdus = async (req, res) => {
+const variatieProdus = async (req, res,next) => {
   req.session.produs=[]
   const { quantity, price } = req.body;
   const { _id } = req.params;
@@ -64,7 +64,7 @@ const stergeProdus=async (req,res)=>{
   
 }
 
-const paginaComanda = async (req, res) => {
+const paginaComanda = async (req, res,next) => {
   const cos = req.session.cos || [];
   const utilizator = req.session.email;
   let totalPret = 0;

@@ -3,7 +3,7 @@ const modelProdus=require('../modele/modelProdus')
 
 
 
-const adaugaProdus = async(req,res)=>{
+const adaugaProdus = async(req,res,next)=>{
     const {adaugaPreferat}=req.body
 
     const produse={
@@ -20,7 +20,7 @@ const adaugaProdus = async(req,res)=>{
     }
 }
 
-const paginaPreferate= async(req,res)=>{
+const paginaPreferate= async(req,res,next)=>{
     const utilizator=req.session.email
     const variante=await modelProdus.find().distinct('categorie').sort()
     if(!utilizator){
@@ -38,7 +38,7 @@ const paginaPreferate= async(req,res)=>{
 }
 }
 
-const stergePreferat= async(req,res)=>{
+const stergePreferat= async(req,res,next)=>{
     
     const {stergeProdus}=req.body
     console.log(stergeProdus)
