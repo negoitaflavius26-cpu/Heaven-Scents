@@ -8,11 +8,11 @@ It provides a clean interface that serves both **admin** and **user** roles, off
 ### Additional Screens
 | Signup Page | Stripe Card Payment | Order Confirmation Email |
 |--------------|--------------------|---------------------------|
-| ![Signup Page](./screenshots/sign_up.png) | ![Stripe Payment](./screenshots/stripe_card.png) | ![Order Email](./screenshots/email_order.png) |
+| ![Signup Page](./screenshots/sign_up.PNG) | ![Stripe Payment](./screenshots/stripe_card.PNG) | ![Order Email](./screenshots/email_order.PNG) |
 
 | Admin Dashboard | Orders Management |
 |-----------------|-------------------|
-| ![Admin Dashboard](./screenshots/dashboard_admin.png) | ![Admin Orders](./screenshots/orders_admin.png) |
+| ![Admin Dashboard](./screenshots/dashboard_admin.PNG) | ![Admin Orders](./screenshots/orders_admin.PNG) |
 
 The principal functionalities of this project are:
  
