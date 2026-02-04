@@ -13,7 +13,7 @@ const modelLogare = require('../modele/modelLogare')
 const { error } = require('console')
 const { CallTracker } = require('assert')
 require("dotenv").config()
-
+const modelResetare=require('../modele/modelResetare')
 
 
 const paginaAcasa= async (req,res,next)=>{
@@ -191,92 +191,91 @@ const uitareParola=async(req,res,next)=>{
     return res.render('pagina-uitare',{variante})
 }
 
-const emailParola=async(req,res)=>{
+
+
+
+const emailParola = async (req, res, next) => {
     try {
-        const{email}=req.body;
-    
+        const { email } = req.body;
+        const resetareParola = email;
+        const variante = await modelProduse.find().distinct('categorie').sort();
+        const verificaEmail = await modelInregistrare.findOne({ email });
 
-    const {error}= await schemaEmail.validate({email})
-    const resetareParola=email
-    
-    const variante=await modelProduse.find().distinct('categorie').sort()
-    console.log(email)
-    const verificaEmail= await modelInregistrare.findOne({email});
-    if(!req.session.resetareParola){
-        req.session.resetareParola={}
-    }
-    const html=hbs.compile(fs.readFileSync('./views/resetareParola.hbs','utf-8'))
-    console.log('Exista emailul?',verificaEmail);
-    if(error){ 
-        let mesajPersoana = error.details[0].message;
-        return res.render('pagina-uitare',{error:mesajPersoana,variante})
-    }
-    if(verificaEmail){
-        const token = jwt.sign(
-            {userId:verificaEmail._id},
-            secretKey='keyboard cat',
-        {expiresIn:'1h'})
-        const linkResetare=`http://localhost:3000/resetare-parola?token=${token}`
-    const paginaHtml = html({verificaEmail,linkResetare},{ allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true });
-    const emailVerificat=verificaEmail.email
-
-    const sesiuneEmail = req.session.resetareParola || {};
-    if (!sesiuneEmail[emailVerificat]) {
-        sesiuneEmail[emailVerificat] = [];
-    }
-    const oraAcum=Date.now()
-    String(oraAcum)
-    const treiEmail=sesiuneEmail[emailVerificat].filter((ora)=>oraAcum-ora<=60*60*1000)
-    
-    
-    
-    if(treiEmail.length===3){
-        console.log('asta e sesiune email',sesiuneEmail)
-        return res.send('Prea multe cereri au fost facute')
-        
-    }
-
-else{
-        sesiuneEmail[emailVerificat]=treiEmail
-        treiEmail.push(oraAcum)
-        console.log('asta e sesiune email',sesiuneEmail)
-    
-    const transportator=nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-      secure: false, // Set it to true if using SSL/TLS
-    auth: {
-        user: process.env.EMAIL_ADRESS,
-        pass: process.env.EMAIL_PASS,
-    },
-    });
-    const email={
-    from:'scentsheaven9@gmail.com',
-    to:req.body.email,
-    subject:'Cerere pentru schimbarea parolei',
-    html:paginaHtml,
-    }
-    transportator.sendMail(email,(error,info)=>{
-        if(error){
-        console.log(error)
-        }else{;
-        console.log('Emailul a fost trimis cu succes');
+        if (!verificaEmail) {
+            let mesajPersoana = `Emailul ${resetareParola} nu exista`;
+            return res.render('pagina-uitare', { mesajPersoana, variante });
         }
-    }
-    );
-    console.log(transportator,'Asta e transporterull')
-    console.log(verificaEmail,'asta e verifica email')
-    return res.render('email-uitare',{variante,resetareParola})
-} 
-    }   if(!verificaEmail){
-        let mesajPersoana=`Emailul ${resetareParola} nu exista`;
-        return res.render('pagina-uitare',{mesajPersoana,variante})
-}
+
+   
+        const { error } = await schemaEmail.validate({ email });
+        if (error) {
+            let mesajPersoana = error.details[0].message;
+            return res.render('pagina-uitare', { error: mesajPersoana, variante });
+        }
+
+        const oraAcum = Date.now();
+        const O_ORA = 3600000;
+        const emailFolosit = await modelResetare.findOne({ email: verificaEmail.email });
+
+        if (emailFolosit) {
+            
+            emailFolosit.ore = emailFolosit.ore.filter((item) => (oraAcum - new Date(item).getTime()) < O_ORA);
+
+            if (emailFolosit.ore.length >= 3) {
+                const timpAsteptare = Math.ceil((O_ORA - (oraAcum - new Date(emailFolosit.ore[0]).getTime())) / 60000);
+                return res.render('pagina-uitare', {
+                    mesajPersoana: `Ai atins limita. Mai așteaptă ${timpAsteptare} minute.`,
+                    variante
+                });
+            }
+
+            emailFolosit.ore.push(oraAcum);
+            await emailFolosit.save();
+        } else {
+            await modelResetare.create({
+                email: verificaEmail.email,
+                ore: [oraAcum]
+            });
+        }
+
+        
+        const token = jwt.sign(
+            { userId: verificaEmail._id },
+            process.env.SECRET_JWT,
+            { expiresIn: '1h' }
+        );
+
+        const html = hbs.compile(fs.readFileSync('./views/resetareParola.hbs', 'utf-8'));
+        const linkResetare = `http://localhost:3000/resetare-parola?token=${token}`;
+        const paginaHtml = html({ verificaEmail, linkResetare });
+
+        const transportator = nodemailer.createTransport({
+            host: process.env.EMAIL_HOST,
+            port: process.env.EMAIL_PORT,
+            auth: {
+                user: process.env.EMAIL_ADRESS,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+   
+        const mailOptions = {
+            from: 'scentsheaven9@gmail.com',
+            to: email,
+            subject: 'Cerere pentru schimbarea parolei',
+            html: paginaHtml,
+        };
+
+        transportator.sendMail(mailOptions, (error, info) => {
+            if (error) console.log(error);
+            else console.log('Emailul a fost trimis cu succes');
+        });
+
+        return res.render('email-uitare', { variante, resetareParola });
 
     } catch (error) {
-        next(error)
+        next(error);
     }
-    
 }
 
 
@@ -286,7 +285,7 @@ const resetareParola= async(req,res,next)=>{
     if(!token){
         return res.status(400).send('Token is required');
     }
-        secretKey='keyboard cat';
+        secretKey=process.env.SECRET_JWT;
         jwt.verify(token,secretKey, async(error,decoded)=>{
             if(error){
                 const variante= await modelProduse.find().distinct('categorie').sort()
