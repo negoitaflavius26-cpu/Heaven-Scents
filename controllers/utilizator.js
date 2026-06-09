@@ -73,12 +73,8 @@ const schimbaParola= async(req,res,next)=>{
     const salt = await bcrypt.genSalt(10); 
     const hashPassword = await bcrypt.hash(req.body.parola, salt);
     const checkPassword= await bcrypt.compare(req.body.verificaParola,hashPassword)
-    const parolaNoua={
-        parola:hashPassword,
-        verificaParola:checkPassword
-    }
-    if(parolaNoua.verificaParola===true){
-        await modelLogare.findByIdAndUpdate(clientId,parolaNoua,{new:true})
+    if(checkPassword===true){
+        await modelLogare.findByIdAndUpdate(clientId,{parola:hashPassword})
         console.log('s-a schimabt parola')
     }
 }
