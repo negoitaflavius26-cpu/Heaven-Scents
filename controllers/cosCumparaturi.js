@@ -22,7 +22,7 @@ const adaugaInCos = async (req, res, next) => {
       req.session.cos.push({ quantity, price, _id, produs });
     }
   }
-  if (!parfumId == req.session.produs) {
+  if (!req.session.produs||req.session.produs.length===0) {
     const mesaj = `Va rugam sa selectati cantitatea parfumului`;
     const variante = await modelProdus.find().distinct("categorie").sort();
     const produs = await modelProdus.findById(parfumId);
